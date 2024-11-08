@@ -1,3 +1,0 @@
-# trabalho-cooperja
-
-Trabalho
