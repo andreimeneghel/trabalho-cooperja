@@ -15,17 +15,12 @@ CREATE TABLE IF NOT EXISTS `tb_users` (
 ) ENGINE=InnoDB;
 
 -- -----------------------------------------------------
--- Tabela de Alunos (tb_alunos)
+-- Tabela de Matérias (tb_materias)
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tb_alunos` (
+CREATE TABLE IF NOT EXISTS `tb_materias` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(120) NOT NULL,
-  `nascimento` DATE NOT NULL,
-  `tb_user_id` INT UNSIGNED NOT NULL,  -- Relacionamento com tb_users
-  `tb_turma_id` INT UNSIGNED NOT NULL, -- Relacionamento com a turma
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_aluno_user` FOREIGN KEY (`tb_user_id`) REFERENCES `tb_users`(`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_aluno_turma` FOREIGN KEY (`tb_turma_id`) REFERENCES `tb_turmas`(`id`) ON DELETE CASCADE
+  `nome` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
 -- -----------------------------------------------------
@@ -55,12 +50,17 @@ CREATE TABLE IF NOT EXISTS `tb_turmas` (
 ) ENGINE=InnoDB;
 
 -- -----------------------------------------------------
--- Tabela de Matérias (tb_materias)
+-- Tabela de Alunos (tb_alunos)
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `tb_materias` (
+CREATE TABLE IF NOT EXISTS `tb_alunos` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `nome` VARCHAR(120) NOT NULL,
+  `nascimento` DATE NOT NULL,
+  `tb_user_id` INT UNSIGNED NOT NULL,  -- Relacionamento com tb_users
+  `tb_turma_id` INT UNSIGNED NOT NULL, -- Relacionamento com a turma
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_aluno_user` FOREIGN KEY (`tb_user_id`) REFERENCES `tb_users`(`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_aluno_turma` FOREIGN KEY (`tb_turma_id`) REFERENCES `tb_turmas`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 -- -----------------------------------------------------
@@ -75,11 +75,3 @@ CREATE TABLE IF NOT EXISTS `tb_notas_presenca` (
   CONSTRAINT `fk_notas_presenca_aluno` FOREIGN KEY (`tb_aluno_id`) REFERENCES `tb_alunos`(`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_notas_presenca_materia` FOREIGN KEY (`tb_materia_id`) REFERENCES `tb_materias`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
-
--- -----------------------------------------------------
--- Índices e configurações adicionais
--- -----------------------------------------------------
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
