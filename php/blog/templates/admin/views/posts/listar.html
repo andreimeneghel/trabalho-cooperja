@@ -1,0 +1,50 @@
+{% extends "dashboard.html" %}
+
+{% block conteudo %}
+<div class="card border-0 shadow-sm mt-3">
+  {{flash()}}
+    <div class="card-header bg-white border-0">
+        Total de posts {{total.total}} - ativos {{total.ativo}} -inativos {{total.inativo}}
+        <div class="text-end">
+        <a href="{{url('admin/posts/cadastrar')}}" class="btn btn-primary">Cadastrar</a>
+      </div>
+    </div>
+    <div class="card-body">
+        <div class="table-resposive">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                  <tr>
+                    <th> {{post.id}}</th>
+                    <td> {{post.titulo}}</td>
+                    <td> 
+                        {% if post.status == 1 %}
+                        Ativo
+                        {%else%}
+                        Inativo
+                        {%endif%}
+                    </td>
+                    <td>
+                      <a href="{{url('admin/posts/editar/'~post.id)}}">Editar</a>
+
+                      <a href="{{url('admin/posts/deletar/'~post.id)}}">Deletar</a>
+                    </td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+        </div>
+   
+       
+       
+    </div>
+</div>
+{% endblock %}

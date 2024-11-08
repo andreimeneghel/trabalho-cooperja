@@ -1,0 +1,47 @@
+{% extends "dashboard.html" %}
+
+{% block conteudo %}
+<div class="card border-0 shadow-sm mt-3">
+    <div class="card-header bg-white border-0">
+      Total de categorias {{total.total}} - ativos {{total.ativo}} -inativos {{total.inativo}}
+      <div class="text-end">
+      <a href="{{url('admin/categorias/cadastrar')}}" class="btn btn-primary">Cadastrar</a>
+    </div>
+    </div>
+    <div class="card-body">
+        <div class="table-resposive">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for categoria in categorias %}
+                  <tr>
+                    <th> {{categoria.id}}</th>
+                    <td> {{categoria.titulo}}</td>
+                    <td>{% if categoria.status == 1 %}
+                      Ativo
+                      {%else%}
+                      Inativo
+                      {%endif%}</td>
+                    <td>  
+                      <a href="{{url('admin/categorias/editar/'~categoria.id)}}">Editar</a>
+
+                      <a href="{{url('admin/categorias/deletar/'~categoria.id)}}">Deletar</a>
+                    </td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+        </div>
+   
+       
+       
+    </div>
+</div>
+{% endblock %}
