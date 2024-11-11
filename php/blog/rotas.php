@@ -51,4 +51,4 @@ SimpleRouter::start();
     else {
         Helpers::redirecionar('404');
     }
-};
+}

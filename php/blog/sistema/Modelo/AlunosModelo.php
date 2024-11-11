@@ -2,8 +2,14 @@
 
 namespace sistema\Modelo;
 
+<<<<<<< HEAD
 use Conexao;
 use sistema\Suporte\Conexao as SuporteConexao;
+=======
+require_once 'sistema/Suporte/Conexao.php';
+
+use sistema\Suporte\Conexao;
+>>>>>>> andrei
 
 class AlunoModelo {
 
