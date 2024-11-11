@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/login.css">
 
-  <script src="<?php __DIR__ . '/assets/js/loginUsuario.js'?>" defer></script>
+  <base href="/templates/site/">
+  <link rel="stylesheet" href="assets/css/login.css">
+  <script src="assets/js/loginUsuario.js"></script>
+
 
   <title>Login Cooperja</title>
 </head>
@@ -16,7 +18,7 @@
     <div class="container px-4 py-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6" style="z-index: 10">
-          <img src="../assets/img/logocooperja.png" alt="Logo Cooperja" id="logo-login">
+          <img src="assets/img/logocooperja.png" alt="Logo Cooperja" id="logo-login">
         </div>
         <div class="col-lg-6 position-relative">
           <div class="card bg-glass">
