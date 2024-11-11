@@ -2,16 +2,10 @@
 
 namespace sistema\Modelo;
 
-<<<<<<< HEAD
 use Conexao;
 use sistema\Suporte\Conexao as SuporteConexao;
-=======
-require_once 'sistema/Suporte/Conexao.php';
 
-use sistema\Suporte\Conexao;
->>>>>>> andrei
-
-class AlunoModelo {
+class AlunosModelo {
 
     public function ler(string $termos = null): array {
 
