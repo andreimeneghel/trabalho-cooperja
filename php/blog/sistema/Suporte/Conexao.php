@@ -16,13 +16,9 @@ class Conexao {
 
             try {
 
-<<<<<<<<< Temporary merge branch 1
                 define('DB_HOST', '127.0.0.1');
                 define('DB_PORTA', '3307');
-=========
-                define('DB_HOST', 'localhost');
-                define('DB_PORTA', '3306');
->>>>>>>>> Temporary merge branch 2
+
                 define('DB_NOME', 'escola_db');
                 define('DB_USUARIO', 'root');
                 define('DB_SENHA', '');
