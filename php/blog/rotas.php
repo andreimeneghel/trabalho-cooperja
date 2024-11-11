@@ -1,4 +1,5 @@
 <?php
+
 use Pecee\SimpleRouter\SimpleRouter;
 use sistema\Suporte\Helpers;
 
@@ -6,11 +7,9 @@ use sistema\Suporte\Helpers;
 
 
 try {
-    // Defina o namespace padrão para os controladores
-    SimpleRouter::setDefaultNamespace('sistema\\Controlador'); // Certifique-se de que o namespace está correto
 
   
-    SimpleRouter::get('/',require 'templates/site/views/loginUsuario.html');
+    SimpleRouter::get('/',require 'templates/site/views/loginUsuario.php');
 // SimpleRouter::get(URL_SITE.'sobre-nos','SiteControlador@sobre');
 // SimpleRouter::get(URL_SITE.'post/{id}','SiteControlador@post');
 // SimpleRouter::get(URL_SITE.'categoria/{id}','SiteControlador@categoria');
@@ -48,5 +47,8 @@ SimpleRouter::start();
     if(Helpers::localhost())
     {
         echo $ex;
+    }
+    else {
+        Helpers::redirecionar('404');
     }
 }
