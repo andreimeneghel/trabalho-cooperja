@@ -4,6 +4,6 @@
 
 use sistema\Nucleo\Sessao;
 
-require './vendor/autoload.php'; 
+require __DIR__ . '/vendor/autoload.php';
 require './rotas.php';
 

@@ -3,7 +3,7 @@
     "description": "Curso PHP",
     "autoload": {
         "psr-4": {
-            "sistema\\": "sistema/"
+            "sistema\\": "sistema"
         },
         "files": [
             "sistema/configuracao.php"
