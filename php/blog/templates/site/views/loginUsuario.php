@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/login.css">
 
-  <script src="../assets/js/loginUsuario.js" defer></script>
+  <script src="<?php __DIR__ . '/assets/js/loginUsuario.js'?>" defer></script>
 
   <title>Login Cooperja</title>
 </head>
