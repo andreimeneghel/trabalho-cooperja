@@ -5,7 +5,7 @@ namespace sistema\Modelo;
 use Conexao;
 use sistema\Suporte\Conexao as SuporteConexao;
 
-class AlunoModelo {
+class AlunosModelo {
 
     public function ler(string $termos = null): array {
 
