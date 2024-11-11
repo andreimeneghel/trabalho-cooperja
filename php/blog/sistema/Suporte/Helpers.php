@@ -37,11 +37,6 @@ class Helpers{
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
-    public static function localhost(): bool {
-        return $_SERVER['SERVER_NAME'] === 'localhost';
-    }
-    
-
     public static function ola(): void{
         echo 'Olá Mundo';
     }

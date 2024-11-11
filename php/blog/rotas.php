@@ -1,11 +1,11 @@
 <?php
+
 use Pecee\SimpleRouter\SimpleRouter;
 use sistema\Suporte\Helpers;
 
 
 try {
 
-  
     SimpleRouter::get('/',require 'templates/site/views/loginUsuario.php');
 // SimpleRouter::get(URL_SITE.'sobre-nos','SiteControlador@sobre');
 // SimpleRouter::get(URL_SITE.'post/{id}','SiteControlador@post');
