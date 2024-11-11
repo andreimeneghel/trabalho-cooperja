@@ -1,5 +1,8 @@
 <?php
 
+define('URL_SITE', 'blog/');
+define('URL_ADMIN', 'blog/admin/');
+
 use Pecee\SimpleRouter\SimpleRouter;
 use sistema\Nucleo\Helpers;
 
