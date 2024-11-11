@@ -3,7 +3,11 @@ use Pecee\SimpleRouter\SimpleRouter;
 use sistema\Suporte\Helpers;
 
 
+
+
 try {
+    // Defina o namespace padrão para os controladores
+    SimpleRouter::setDefaultNamespace('sistema\\Controlador'); // Certifique-se de que o namespace está correto
 
   
     SimpleRouter::get('/',require 'templates/site/views/loginUsuario.php');
@@ -44,8 +48,5 @@ SimpleRouter::start();
     if(Helpers::localhost())
     {
         echo $ex;
-    }
-    else {
-        Helpers::redirecionar('404');
     }
 }

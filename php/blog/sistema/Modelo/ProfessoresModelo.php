@@ -6,7 +6,7 @@ require_once 'sistema/Suporte/Conexao.php';
 
 use sistema\Suporte\Conexao;
 
-class AlunoModelo {
+class ProfessoresModelo {
 
     public function ler(string $termos = null): array {
 
@@ -18,7 +18,7 @@ class AlunoModelo {
             $clausula = $termos;
         }
 
-        $query = "SELECT * FROM tb_alunos ".$clausula;
+        $query = "SELECT * FROM tb_professores ".$clausula;
         $stmt = Conexao::getInstancia()->query($query);
         $resultado = $stmt->fetchAll();
 
@@ -27,7 +27,7 @@ class AlunoModelo {
 
     public function contar(): int {
 
-        $query = "SELECT COUNT(*) FROM tb_alunos";
+        $query = "SELECT COUNT(*) FROM tb_professores";
         $stmt = Conexao::getInstancia()->query($query);
         $resultado = $stmt->fetchColumn();
 
@@ -36,21 +36,21 @@ class AlunoModelo {
 
     public function inserir(array $dados): void {
 
-        $query = "INSERT INTO `tb_alunos` (`nome`, `nascimento`, `tb_user_id`, `tb_turma_id`) VALUES (?, ?, ?, ?)";       
+        $query = "INSERT INTO `tb_professores` (`nome`, `nascimento`, 'admissao', `tb_user_id`) VALUES (?, ?, ?, ?)";       
         $stmt = Conexao::getInstancia()->prepare($query);
-        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['tb_user_id'], $dados['tb_turma_id']]);     
+        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['admissao'], $dados['tb_user_id']]);     
     }
 
     public function atualizar (array $dados, int $id):void {
         
-        $query = "UPDATE tb_alunos SET nome = ?, nascimento = ?, tb_user_id = ?, tb_turma_id = ? WHERE id = ?"; 
+        $query = "UPDATE tb_professores SET nome = ?, nascimento = ?, admissao = ?, tb_user_id = ? WHERE id = ?"; 
         $stmt = Conexao::getInstancia()->prepare($query);
-        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['tb_user_id'], $dados['tb_turma_id'], $id]);
+        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['admissao'], $dados['tb_user_id'], $id]);
     }
 
     public function deletar (int $id):void {
         
-        $query = "DELETE FROM tb_alunos WHERE id = ?"; 
+        $query = "DELETE FROM tb_professores WHERE id = ?"; 
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute([$id]);
     }
