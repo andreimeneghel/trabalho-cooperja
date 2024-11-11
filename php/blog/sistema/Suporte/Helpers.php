@@ -38,5 +38,14 @@ class Helpers{
     }
 
 
+    public static function localhost(): bool{
+        $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
+
+        if($servidor == 'localhost'){
+            return true;
+        }
+        return false;
+    }
+
 
 }
