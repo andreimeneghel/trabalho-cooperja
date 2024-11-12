@@ -37,15 +37,19 @@ class Helpers{
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
-    public static function localhost(): bool {
-        return $_SERVER['SERVER_NAME'] === 'localhost';
-    }
-    
-
     public static function ola(): void{
         echo 'Olá Mundo';
     }
 
+
+    public static function localhost(): bool{
+        $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
+
+        if($servidor == 'localhost'){
+            return true;
+        }
+        return false;
+    }
 
 
 }

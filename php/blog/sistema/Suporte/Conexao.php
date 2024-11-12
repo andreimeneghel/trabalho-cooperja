@@ -16,12 +16,13 @@ class Conexao {
 
             try {
 
-
                 define('DB_HOST', 'localhost');
+
                 define('DB_PORTA', '3307');
                 define('DB_NOME', 'escola_db');
                 define('DB_USUARIO', 'root');
                 define('DB_SENHA', '');
+
 
                 self::$instancia = new PDO('mysql:host='.DB_HOST.';port='.DB_PORTA.';dbname='.DB_NOME, DB_USUARIO, DB_SENHA, [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
