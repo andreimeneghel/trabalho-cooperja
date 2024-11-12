@@ -40,6 +40,16 @@ class AlunosModelo {
         $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['tb_user_id'], $dados['tb_turma_id']]);     
     }
 
+    public function pesquisa(string $busca):array
+{
+
+    $query = "SELECT * FROM tb_alunos WHERE titulo LIKE '%{$busca}%' ";
+    $stmt = SuporteConexao::getInstancia()->query($query);
+    $resultado = $stmt->fetchAll();
+
+    return $resultado;
+}
+
     public function atualizar (array $dados, int $id):void {
         
         $query = "UPDATE tb_alunos SET nome = ?, nascimento = ?, tb_user_id = ?, tb_turma_id = ? WHERE id = ?"; 
