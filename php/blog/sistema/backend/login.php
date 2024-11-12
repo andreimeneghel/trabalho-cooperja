@@ -2,13 +2,18 @@
 
 require_once '../Suporte/Conexao.php'; 
 
+
 use sistema\Suporte\Conexao;
+
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Email inválido.");
+        $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email inválido.'];
+        header('Location: /');
+        exit;
     }
 
     try {
@@ -29,13 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: /dashboard");
             exit;
         } else {
-            echo "Email ou senha inválidos.";
+            $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email ou senha inválidos.'];
+            header('Location: /');
+            exit;
         }
     } catch (Exception $e) {
         echo "Erro: " . $e->getMessage();
     }
 } else {
-    header("Location: /sistema/templates/site/views/loginUsuario.php");
+    header("Location: /");
     exit;
 }
 ?>
