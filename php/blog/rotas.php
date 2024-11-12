@@ -9,6 +9,10 @@ try {
         require 'templates/site/views/loginUsuario.php';
     });
 
+    SimpleRouter::get('/dashboard', function() {
+        require 'templates/site/views/dashboard.php';
+    });
+
     // SimpleRouter::get(URL_SITE.'sobre-nos','SiteControlador@sobre');
     // SimpleRouter::get(URL_SITE.'post/{id}','SiteControlador@post');
     // SimpleRouter::get(URL_SITE.'categoria/{id}','SiteControlador@categoria');

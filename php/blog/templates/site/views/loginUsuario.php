@@ -4,7 +4,7 @@ session_start();
 
 // Redirecionar se o usuário já estiver logado 
 if (isset($_SESSION['user_id'])) {
-  header('Location: /'); // Redireciona para a página de dashboard
+  header('Location: /dashboard'); // Redireciona para a página de dashboard
   exit;
 }
 

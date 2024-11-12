@@ -7,5 +7,5 @@ use Sistema\Suporte\Sessao;
 $sessao = new Sessao();
 $sessao->deletar();
 
-header("Location: /templates/site/views/loginUsuario.php");
+header("Location: /");
 exit;

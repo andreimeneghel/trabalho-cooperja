@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_role'] = $user['role'];
-            header("Location: /templates/site/views/dashboard.php");
+            header("Location: /dashboard");
             exit;
         } else {
             echo "Email ou senha inválidos.";
