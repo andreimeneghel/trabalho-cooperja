@@ -44,15 +44,15 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
         <div class="col-lg-6 position-relative">
           <div class="card bg-glass">
             <div class="card-body px-4 py-5">
-              <!-- Formulário de Login -->
-              <form action="/backend/login.php" method="POST" id="loginForm">
+              <!-- Formulário de Login (NAO INTEGRADO) -->
+              <form action="<?= $BASE_URL ?>login.php" method="POST" id="loginForm">
                 <h2 class="text-center mb-4">Login</h2>
                 <div class="form-floating mb-4 text-secondary">
                   <input type="email" name="email" class="form-control" placeholder="Email" required />
                   <label for="loginEmail">Email</label>
                 </div>
                 <div class="form-floating mb-4 text-secondary">
-                  <input type="password" name="senha" class="form-control" placeholder="Password" required />
+                  <input type="password" name="password" class="form-control" placeholder="Password" required />
                   <label for="loginPassword">Senha</label>
                 </div>
                 <div class="text-center">

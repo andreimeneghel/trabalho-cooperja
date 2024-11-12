@@ -9,22 +9,6 @@ try {
         require 'templates/site/views/loginUsuario.php';
     });
 
-    SimpleRouter::get('/assets/{path}', function (Request $request) {
-        $path = $request->getParam('path');
-        $file = __DIR__ . '/templates/site/assets/' . $path;
-    
-        if (file_exists($file)) {
-            $mimeType = mime_content_type($file);
-            header("Content-Type: {$mimeType}");
-            header("Cache-Control: public, max-age=31536000");
-            readfile($file);
-            exit;
-        } else {
-            http_response_code(404);
-            echo 'File not found';
-        }
-    })->where(['path' => '.*']);
-
     // SimpleRouter::get(URL_SITE.'sobre-nos','SiteControlador@sobre');
     // SimpleRouter::get(URL_SITE.'post/{id}','SiteControlador@post');
     // SimpleRouter::get(URL_SITE.'categoria/{id}','SiteControlador@categoria');
