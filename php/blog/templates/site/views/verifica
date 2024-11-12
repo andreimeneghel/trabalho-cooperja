@@ -1,7 +1,4 @@
-// Verificar se a sessão existe e se a variável 'role' está definida
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'professor') {
-    die('Acesso restrito! Somente professores podem cadastrar notas e presença.');
-}
+
 
 
 

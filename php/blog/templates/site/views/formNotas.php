@@ -2,12 +2,11 @@
 session_start();
 
 
-
-require_once '../../../sistema/Suporte/Conexao.php';
 use sistema\Suporte\Conexao;
 
 // Inicializa o banco de dados
 $pdo = Conexao::getInstancia();
+
 
 // Buscar as turmas do professor
 $stmt = $pdo->prepare("SELECT t.id, t.nome FROM tb_turmas t WHERE t.tb_professor_id = :professor_id");
