@@ -16,9 +16,8 @@ class Conexao {
 
             try {
 
-                define('DB_HOST', 'localhost');
-
-                define('DB_PORTA', '3307');
+                define('DB_HOST', '127.0.0.1');
+                define('DB_PORTA', '3306');
                 define('DB_NOME', 'escola_db');
                 define('DB_USUARIO', 'coop-leandro');
                 define('DB_SENHA', 'viveocampo');
