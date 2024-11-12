@@ -1,5 +1,8 @@
 <?php 
     $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
+
+    session_start();
+
 ?>
 
 
@@ -45,7 +48,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/turminhas">
                                 <i class="fas fa-chalkboard-teacher"></i> Turmas
                             </a>
                         </li>
