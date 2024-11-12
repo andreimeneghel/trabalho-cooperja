@@ -26,6 +26,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
 </head>
 
 <body>
+
   <section class="background-radial-gradient overflow-hidden">
     <?php if (isset($_SESSION['flash_message'])): ?>
       <div class="alert alert-<?= $_SESSION['flash_message']['type'] ?> alert-dismissible fade show custom-alert" role="alert">
@@ -34,6 +35,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
       </div>
       <?php unset($_SESSION['flash_message']); ?>
     <?php endif; ?>
+
     <div class="container px-4 py-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -42,6 +44,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
         <div class="col-lg-6 position-relative">
           <div class="card bg-glass">
             <div class="card-body px-4 py-5">
+              
               <!-- Formulário de Login (NAO INTEGRADO) -->
               <form action="<?= $BASE_URL ?>login.php" method="POST" id="loginForm">
                 <h2 class="text-center mb-4">Login</h2>
@@ -54,7 +57,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                   <label for="loginPassword">Senha</label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                  <button type="submit" class="btn btn-block">Entrar</button>
                   <p class="mt-3">Não tem conta? <a class="text-decoration-none" href="#" onclick="toggleForm(false); return false;">Cadastre-se</a></p>
                 </div>
               </form>
@@ -93,7 +96,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                   <label for="registerRole">Função</label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-block">Criar Conta</button>
+                  <button type="submit" class="btn btn-block">Criar Conta</button>
                   <p class="mt-3">Já tem uma conta? <a href="#" class="text-decoration-none" onclick="toggleForm(true); return false;">Entrar</a></p>
                 </div>
               </form>
