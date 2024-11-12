@@ -4,132 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "18e02e85f4ab949f91b42f7106d1470d",
+    "content-hash": "3d671106e19ebfc715c16cb7a90eec47",
     "packages": [
-        {
-            "name": "altorouter/altorouter",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dannyvankooten/AltoRouter.git",
-                "reference": "36f67da10029b98a44a78f8b07502efa03230c04"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dannyvankooten/AltoRouter/zipball/36f67da10029b98a44a78f8b07502efa03230c04",
-                "reference": "36f67da10029b98a44a78f8b07502efa03230c04",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "9.6.*",
-                "squizlabs/php_codesniffer": "3.6.2"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "AltoRouter.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Danny van Kooten",
-                    "email": "dannyvankooten@gmail.com",
-                    "homepage": "http://dannyvankooten.com/"
-                },
-                {
-                    "name": "Koen Punt",
-                    "homepage": "https://github.com/koenpunt"
-                },
-                {
-                    "name": "niahoo",
-                    "homepage": "https://github.com/niahoo"
-                }
-            ],
-            "description": "A lightning fast router for PHP",
-            "homepage": "https://github.com/dannyvankooten/AltoRouter",
-            "keywords": [
-                "lightweight",
-                "router",
-                "routing"
-            ],
-            "support": {
-                "issues": "https://github.com/dannyvankooten/AltoRouter/issues",
-                "source": "https://github.com/dannyvankooten/AltoRouter/tree/master"
-            },
-            "time": "2023-11-30T09:10:31+00:00"
-        },
-        {
-            "name": "nikic/fast-route",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/FastRoute.git",
-                "reference": "d3ada013d0f683ad2a8d0614fc97917a6ab72ce9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/FastRoute/zipball/d3ada013d0f683ad2a8d0614fc97917a6ab72ce9",
-                "reference": "d3ada013d0f683ad2a8d0614fc97917a6ab72ce9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1.0",
-                "psr/simple-cache": "^2.0 || ^3.0"
-            },
-            "require-dev": {
-                "lcobucci/coding-standard": "^11.0",
-                "phpbench/phpbench": "^1.2",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.10",
-                "phpstan/phpstan-deprecation-rules": "^1.1",
-                "phpstan/phpstan-phpunit": "^1.3",
-                "phpstan/phpstan-strict-rules": "^1.5",
-                "phpunit/phpunit": "^10.3"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
-                "psr-4": {
-                    "FastRoute\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov",
-                    "email": "nikic@php.net"
-                }
-            ],
-            "description": "Fast request router for PHP",
-            "keywords": [
-                "router",
-                "routing"
-            ],
-            "support": {
-                "issues": "https://github.com/nikic/FastRoute/issues",
-                "source": "https://github.com/nikic/FastRoute/tree/2.0.0-beta1"
-            },
-            "time": "2024-03-04T23:46:43+00:00"
-        },
         {
             "name": "pecee/simple-router",
             "version": "dev-master",
@@ -193,109 +69,6 @@
                 "source": "https://github.com/skipperbent/simple-php-router/issues"
             },
             "time": "2023-12-11T21:52:06+00:00"
-        },
-        {
-            "name": "psr/simple-cache",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/simple-cache.git",
-                "reference": "2d280c2aaa23a120f35d55cfde8581954a8e77fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/2d280c2aaa23a120f35d55cfde8581954a8e77fa",
-                "reference": "2d280c2aaa23a120f35d55cfde8581954a8e77fa",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\SimpleCache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interfaces for simple caching",
-            "keywords": [
-                "cache",
-                "caching",
-                "psr",
-                "psr-16",
-                "simple-cache"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/simple-cache/tree/master"
-            },
-            "time": "2022-04-08T16:41:45+00:00"
-        },
-        {
-            "name": "slim/slim",
-            "version": "2.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/slimphp/Slim.git",
-                "reference": "7d3308bb8b41238941c0cbf549ef103c1bd69a30"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim/zipball/7d3308bb8b41238941c0cbf549ef103c1bd69a30",
-                "reference": "7d3308bb8b41238941c0cbf549ef103c1bd69a30",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "suggest": {
-                "ext-mcrypt": "Required for HTTP cookie encryption",
-                "phpseclib/mcrypt_compat": "Polyfil for mcrypt extension"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Slim": "."
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Josh Lockhart",
-                    "email": "info@joshlockhart.com",
-                    "homepage": "http://www.joshlockhart.com/"
-                }
-            ],
-            "description": "Slim Framework, a PHP micro framework",
-            "homepage": "http://github.com/codeguy/Slim",
-            "keywords": [
-                "microframework",
-                "rest",
-                "router"
-            ],
-            "support": {
-                "issues": "https://github.com/slimphp/Slim/issues",
-                "source": "https://github.com/slimphp/Slim/tree/2.x"
-            },
-            "time": "2017-01-07T15:23:35+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -609,12 +382,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "0ca3815c5cdd86d51f632e7de65e48207bc2b05c"
+                "reference": "c5d0d593d21f9e713180e67ecfcf3b14f0923a84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/0ca3815c5cdd86d51f632e7de65e48207bc2b05c",
-                "reference": "0ca3815c5cdd86d51f632e7de65e48207bc2b05c",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c5d0d593d21f9e713180e67ecfcf3b14f0923a84",
+                "reference": "c5d0d593d21f9e713180e67ecfcf3b14f0923a84",
                 "shasum": ""
             },
             "require": {
@@ -681,17 +454,14 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-08T19:13:25+00:00"
+            "time": "2024-11-12T07:12:30+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "altorouter/altorouter": 20,
-        "nikic/fast-route": 20,
-        "pecee/simple-router": 20,
-        "slim/slim": 20
+        "pecee/simple-router": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
