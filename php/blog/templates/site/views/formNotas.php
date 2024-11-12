@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 use sistema\Suporte\Conexao;
 
 // Inicializa o banco de dados
@@ -9,14 +8,21 @@ $pdo = Conexao::getInstancia();
 
 
 // Buscar as turmas do professor
-$stmt = $pdo->prepare("SELECT t.id, t.nome FROM tb_turmas t WHERE t.tb_professor_id = :professor_id");
-$stmt->bindParam(':professor_id', $_SESSION['user_id']);
+$stmt = $pdo->prepare("
+    SELECT t.id, t.nome 
+    FROM tb_turmas t
+    INNER JOIN tb_professores p ON t.tb_professor_id = p.id
+    WHERE p.tb_user_id = :user_id
+");
+$stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
 $stmt->execute();
+
 $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
 // Se uma turma for selecionada, buscar os alunos dessa turma
-if (isset($_POST['turma_id'])) {
-    $turma_id = $_POST['turma_id'];
+if (isset($_GET['turma_id'])) {
+    $turma_id = $_GET['turma_id'];
 
     // Buscar os alunos da turma selecionada
     $stmt = $pdo->prepare("SELECT a.id, a.nome FROM tb_alunos a WHERE a.tb_turma_id = :turma_id");
@@ -24,6 +30,7 @@ if (isset($_POST['turma_id'])) {
     $stmt->execute();
     $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -38,22 +45,26 @@ if (isset($_POST['turma_id'])) {
 <h1>Cadastro de Notas e Presença</h1>
 
 <!-- Formulário para selecionar a turma -->
-<form action="formNotas.php" method="post">
+<form action="" method="get">
     <label for="turma_id">Selecione uma Turma:</label>
     <select name="turma_id" id="turma_id" required>
         <option value="">Escolha uma turma</option>
         <?php foreach ($turmas as $turma): ?>
-            <option value="<?= $turma['id'] ?>"><?= $turma['nome'] ?></option>
+            <option value="<?= $turma['id'] ?>" <?= (isset($_GET['turma_id']) && $_GET['turma_id'] == $turma['id']) ? 'selected' : '' ?>>
+                <?= $turma['nome'] ?>
+            </option>
         <?php endforeach; ?>
     </select>
     <button type="submit">Selecionar</button>
 </form>
 
+
 <?php if (isset($alunos) && count($alunos) > 0): ?>
     <h2>Alunos da Turma Selecionada</h2>
-    <form action="cadastroNotasPresenca.php" method="post">
+    <form action="/sistema/backend/cadastroNotasPresenca.php" method="post">
+        <input type="hidden" name="materia_id" value="<?=$_GET['turma_id']?>">
         <table border="1">
-            <thead>
+            <thead>s
                 <tr>
                     <th>Nome do Aluno</th>
                     <th>Presença</th>
