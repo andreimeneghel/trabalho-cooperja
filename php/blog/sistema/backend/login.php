@@ -1,11 +1,10 @@
 <?php
 
 require_once '../Suporte/Conexao.php'; 
-
-
 use sistema\Suporte\Conexao;
 
 session_start();
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -28,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Verificar se o usuário foi encontrado e se a senha está correta
         if ($user && password_verify($password, $user['password'])) {
-            session_start();
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_role'] = $user['role'];
             header("Location: /dashboard");

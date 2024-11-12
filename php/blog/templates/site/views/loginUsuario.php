@@ -1,5 +1,4 @@
 <?php
-// Iniciar a sessão 
 session_start();
 
 // Redirecionar se o usuário já estiver logado 
@@ -15,12 +14,11 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
 <html lang="pt-br">
 
 <head>
-  <link rel="icon" href="../assets/img/logocooperja.ico" type="image/x-icon">
+  <base href="/templates/site/">
+  <link rel="icon" href="assets/img/logocooperja.ico" type="image/x-icon">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <base href="/templates/site/">
   <link rel="stylesheet" href="assets/css/login.css">
   <script src="assets/js/loginUsuario.js"></script>
 

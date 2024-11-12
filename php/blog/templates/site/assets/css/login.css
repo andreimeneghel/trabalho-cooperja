@@ -4,44 +4,64 @@
 
 .background-radial-gradient {
   height: 100vh;
-  background-color: #245852; /* Cor verde principal da Cooperja */
+  background-color: #245852;
+  /* Cor verde principal da Cooperja */
   background-image: radial-gradient(650px circle at 0% 0%,
-      #366a5f 15%,    /* Tom mais claro de verde */
-      #2f5e56 35%,    /* Tom intermediário */
-      #245852 75%,    /* Cor verde principal */
-      #1e4944 80%,    /* Tom mais escuro */
+      #366a5f 15%,
+      /* Tom mais claro de verde */
+      #2f5e56 35%,
+      /* Tom intermediário */
+      #245852 75%,
+      /* Cor verde principal */
+      #1e4944 80%,
+      /* Tom mais escuro */
       transparent 100%),
     radial-gradient(1250px circle at 100% 100%,
-      #366a5f 15%,    /* Tom mais claro */
-      #2f5e56 35%,    /* Tom intermediário */
-      #245852 75%,    /* Cor verde principal */
-      #1e4944 80%,    /* Tom mais escuro */
+      #366a5f 15%,
+      /* Tom mais claro */
+      #2f5e56 35%,
+      /* Tom intermediário */
+      #245852 75%,
+      /* Cor verde principal */
+      #1e4944 80%,
+      /* Tom mais escuro */
       transparent 100%);
 }
+
 .bg-glass {
   background-color: hsla(0, 0%, 100%, 0.815) !important;
   backdrop-filter: saturate(200%) blur(25px);
 
 }
 
-
-
-#logo-login{
+#logo-login {
   width: 500px;
 }
 
-.btn{
+.btn {
   background-color: #245852ee;
   color: #d4a427;
 }
 
 
-.btn:hover{
+.btn:hover {
   background-color: #d4a427;
   color: #245852ee;
 }
 
-    .botao-flash {
-        padding: 0.10rem; 
-        font-size: 0.875rem;
-    }
+.botao-flash {
+  padding: 0.10rem;
+  font-size: 0.875rem;
+}
+
+@media(max-width: 768px) {
+  .background-radial-gradient {
+    height: auto;
+  }
+
+
+  #logo-login {
+    width: 250px;
+  }
+
+}
