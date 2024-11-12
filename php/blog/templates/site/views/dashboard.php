@@ -1,3 +1,8 @@
+<?php 
+    $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,7 +23,7 @@
         <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Pesquisar..." aria-label="Pesquisar">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#">Sair</a>
+                <a class="nav-link px-3" href="<?=$BASE_URL?>logout.php">Sair</a>
             </div>
         </div>
     </header>
