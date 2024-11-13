@@ -20,21 +20,40 @@ $stmt = $pdo->prepare("
 ");
 $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
 $stmt->execute();
-
 $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
-// Se uma turma for selecionada, buscar os alunos dessa turma
+// Se uma turma for selecionada, buscar as matérias e os alunos com base nas condições específicas
 if (isset($_GET['turma_id'])) {
     $turma_id = $_GET['turma_id'];
 
-    // Buscar os alunos da turma selecionada
-    $stmt = $pdo->prepare("SELECT a.id, a.nome FROM tb_alunos a WHERE a.tb_turma_id = :turma_id");
-    $stmt->bindParam(':turma_id', $turma_id);
+    // Buscar a matéria associada à turma
+    $stmt = $pdo->prepare("
+        SELECT m.id, m.nome 
+        FROM tb_materias m
+        INNER JOIN tb_turmas t ON t.tb_materia_id = m.id
+        WHERE t.id = :turma_id
+    ");
+    $stmt->bindParam(':turma_id', $turma_id, PDO::PARAM_INT);
     $stmt->execute();
-    $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+    $materias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // Buscar alunos da turma que têm a matéria
+    if (isset($_GET['materia_id'])) {
+        $materia_id = $_GET['materia_id'];
+
+        $stmt = $pdo->prepare("
+            SELECT a.id, a.nome 
+            FROM tb_alunos a
+            INNER JOIN tb_turmas t ON a.tb_turma_id = t.id
+            WHERE a.tb_turma_id = :turma_id
+              AND t.tb_materia_id = :materia_id
+        ");
+        $stmt->bindParam(':turma_id', $turma_id, PDO::PARAM_INT);
+        $stmt->bindParam(':materia_id', $materia_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +62,6 @@ if (isset($_GET['turma_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Notas e Presença</title>
-    <!-- Link para o CSS do Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
@@ -51,7 +69,6 @@ if (isset($_GET['turma_id'])) {
 <div class="container mt-5">
     <h1 class="text-center mb-4">Cadastro de Notas e Presença</h1>
 
-    <!-- Formulário para selecionar a turma -->
     <div class="card p-4 mb-4">
         <form action="" method="get">
             <div class="form-group">
@@ -59,12 +76,27 @@ if (isset($_GET['turma_id'])) {
                 <select name="turma_id" id="turma_id" class="form-control" required>
                     <option value="">Escolha uma turma</option>
                     <?php foreach ($turmas as $turma): ?>
-                        <option value="<?= $turma['id'] ?>" <?= (isset($_GET['turma_id']) && $_GET['turma_id'] == $turma['id']) ? 'selected' : '' ?>>
-                            <?= $turma['nome'] ?>
+                        <option value="<?= htmlspecialchars($turma['id']) ?>" <?= (isset($_GET['turma_id']) && $_GET['turma_id'] == $turma['id']) ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($turma['nome']) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
             </div>
+
+            <?php if (isset($materias)): ?>
+                <div class="form-group">
+                    <label for="materia_id">Selecione uma Matéria:</label>
+                    <select name="materia_id" id="materia_id" class="form-control" required>
+                        <option value="">Escolha uma Matéria</option>
+                        <?php foreach ($materias as $materia): ?>
+                            <option value="<?= htmlspecialchars($materia['id']) ?>" <?= (isset($_GET['materia_id']) && $_GET['materia_id'] == $materia['id']) ? 'selected' : '' ?>>
+                                <?= htmlspecialchars($materia['nome']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <?php endif; ?>
+
             <button type="submit" class="btn btn-primary">Selecionar</button>
         </form>
     </div>
@@ -72,7 +104,8 @@ if (isset($_GET['turma_id'])) {
     <?php if (isset($alunos) && count($alunos) > 0): ?>
         <h2 class="text-center mb-3">Alunos da Turma Selecionada</h2>
         <form action="/sistema/backend/cadastroNotasPresenca.php" method="post" class="card p-4">
-            <input type="hidden" name="materia_id" value="<?=$_GET['turma_id']?>">
+            <input type="hidden" name="turma_id" value="<?= htmlspecialchars($_GET['turma_id']) ?>">
+            <input type="hidden" name="materia_id" value="<?= htmlspecialchars($_GET['materia_id']) ?>">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
@@ -85,12 +118,12 @@ if (isset($_GET['turma_id'])) {
                     <tbody>
                         <?php foreach ($alunos as $aluno): ?>
                             <tr>
-                                <td><?= $aluno['nome'] ?></td>
+                                <td><?= htmlspecialchars($aluno['nome']) ?></td>
                                 <td class="text-center">
-                                    <input type="checkbox" name="presenca[<?= $aluno['id'] ?>]" value="1" class="form-check-input">
+                                    <input type="checkbox" name="presenca[<?= htmlspecialchars($aluno['id']) ?>]" value="1" class="form-check-input">
                                 </td>
                                 <td>
-                                    <input type="number" name="nota[<?= $aluno['id'] ?>]" min="0" max="10" step="0.01" class="form-control">
+                                    <input type="number" name="nota[<?= htmlspecialchars($aluno['id']) ?>]" min="0" max="10" step="0.01" class="form-control">
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -101,12 +134,11 @@ if (isset($_GET['turma_id'])) {
         </form>
     <?php elseif (isset($turma_id)): ?>
         <div class="alert alert-warning mt-4" role="alert">
-            Não há alunos cadastrados nesta turma ainda.
+            Não há alunos cadastrados nesta turma para esta matéria.
         </div>
     <?php endif; ?>
 </div>
 
-<!-- Scripts do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
