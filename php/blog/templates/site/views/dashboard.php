@@ -2,10 +2,15 @@
 $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 session_start();
 
-if ($_SESSION['user_role'] !== 'professor') {
-    header("Location: /academico"); 
-    exit;
+if(isset($_SESSION['user_id'])){
+    if ($_SESSION['user_role'] !== 'professor') {
+        header("Location: /academico"); 
+        exit;
+    }
+} else {
+    header("Location: /"); 
 }
+
 
 ?>
 

@@ -2,9 +2,14 @@
 session_start();
 $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 
-if ($_SESSION['user_role'] !== 'aluno') {
-    header("Location: /dashboard"); 
-    exit;
+
+if(isset($_SESSION['user_id'])){
+    if ($_SESSION['user_role'] !== 'aluno') {
+        header("Location: /"); 
+        exit;
+    }
+} else {
+    header("Location: /"); 
 }
 
 use sistema\Suporte\Conexao;
