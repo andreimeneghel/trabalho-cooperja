@@ -1,8 +1,13 @@
-<?php 
-    $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
+<?php
+session_start();
 
-    session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: /"); 
+    exit;
+}
+
+$BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 ?>
 
 
@@ -23,7 +28,6 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Pesquisar..." aria-label="Pesquisar">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
                 <a class="nav-link px-3" href="<?=$BASE_URL?>logout.php">Sair</a>
