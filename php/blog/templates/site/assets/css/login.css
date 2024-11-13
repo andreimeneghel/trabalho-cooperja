@@ -53,15 +53,3 @@
   padding: 0.10rem;
   font-size: 0.875rem;
 }
-
-@media(max-width: 768px) {
-  .background-radial-gradient {
-    height: auto;
-  }
-
-
-  #logo-login {
-    width: 250px;
-  }
-
-}
