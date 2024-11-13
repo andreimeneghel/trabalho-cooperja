@@ -16,9 +16,10 @@ $pdo = Conexao::getInstancia();
 // Verificar se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Receber os dados do formulário
-    $materia_id = $_POST['materia_id'];  // Matéria selecionada no formulário
-    $presencas = $_POST['presenca'] ?? [];  // Array de presenças
-    $notas = $_POST['nota'];                // Array de notas
+    $materia_id = $_POST['materia_id'];
+    $presencas = $_POST['presenca'] ?? [];
+    $notas = $_POST['nota'];
+    $data = date('Y-m-d');
 
     foreach ($notas as $aluno_id => $nota) {
         // Definir presença como 0 se o checkbox não foi marcado
@@ -40,19 +41,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute();
             $resultado = $stmt->fetch(PDO::FETCH_OBJ);
 
-            if ($resultado) {
-                // Atualizar a nota e presença
+            if ($resultado && $resultado->data === $data) {
+                // Atualizar a nota e presença sem alterar a data
                 $stmt = $pdo->prepare("
                     UPDATE tb_notas_presenca 
-                    SET nota = :nota, presenca = :presenca 
-                    WHERE tb_aluno_id = :aluno_id AND tb_materia_id = :materia_id
+                    SET nota = :nota, presenca = :presenca
+                    WHERE tb_aluno_id = :aluno_id AND tb_materia_id = :materia_id AND data = :data
                 ");
+                $stmt->bindParam(':data', $data); // Usar o valor atual de $data
             } else {
                 // Inserir um novo registro
                 $stmt = $pdo->prepare("
-                    INSERT INTO tb_notas_presenca (tb_aluno_id, tb_materia_id, nota, presenca) 
-                    VALUES (:aluno_id, :materia_id, :nota, :presenca)
+                    INSERT INTO tb_notas_presenca (tb_aluno_id, tb_materia_id, nota, presenca, data) 
+                    VALUES (:aluno_id, :materia_id, :nota, :presenca, :data)
                 ");
+                $stmt->bindParam(':data', $data);
             }
 
             // Executar a query

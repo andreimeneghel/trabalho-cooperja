@@ -113,6 +113,7 @@ if (isset($_GET['turma_id'])) {
                             <th>Nome do Aluno</th>
                             <th>Presença</th>
                             <th>Nota</th>
+                            <th>Data</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -124,6 +125,9 @@ if (isset($_GET['turma_id'])) {
                                 </td>
                                 <td>
                                     <input type="number" name="nota[<?= htmlspecialchars($aluno['id']) ?>]" min="0" max="10" step="0.01" class="form-control">
+                                </td>
+                                <td>
+                                    <input name="data"  class="form-control" value="<?= date('d/m/Y');?>" readonly>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
