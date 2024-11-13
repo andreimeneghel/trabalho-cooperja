@@ -65,14 +65,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(':presenca', $presenca);
 
             if ($stmt->execute()) {
-                echo "<p>Cadastro de nota e presença realizado com sucesso para o aluno ID $aluno_id!</p>";
+
+                $_SESSION['flash_message'] = ['type' => 'success', 'message' => 'Cadastro/Atualização de nota e presença realizado com sucesso'];
             } else {
-                echo "<p>Erro ao cadastrar dados para o aluno ID $aluno_id. Tente novamente.</p>";
+                $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Erro ao cadastrar dados para o aluno, tente novamente.'];
             }
         } catch (Exception $e) {
             echo "Erro: " . $e->getMessage();
         }
     }
+    
+    header('Location: /turminhas');
 }
 ?>
 
