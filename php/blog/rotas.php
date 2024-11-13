@@ -16,6 +16,14 @@ try {
     SimpleRouter::get('/turmas', function() {
         require 'templates/site/views/formNotas.php';
     });
+    
+    SimpleRouter::get('/alunos', function() {
+        require 'templates/site/views/alunos.php';
+    });
+
+    SimpleRouter::get('/configuracoes', function() {
+        require 'templates/site/views/configuracoes.php';
+    });
 
     SimpleRouter::get('/academico', function() {
         require 'templates/site/views/academicos.php';
