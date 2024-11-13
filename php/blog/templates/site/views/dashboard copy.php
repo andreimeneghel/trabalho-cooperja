@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: /");
     exit;
@@ -8,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,20 +25,49 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
 
 <body>
 
-    <!-- Incluir o Header -->
-    <?php include('header.php'); ?>
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Página de Professores</a>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="<?= $BASE_URL ?>logout.php">Sair</a>
+            </div>
+        </div>
+    </header>
 
-    <div class="container-fluid p-0">
-        <div class="row m-0" style="min-height: 100vh;">
+    <div class="container-fluid">
+        <div class="row">
 
-            <!-- Incluir o Sidebar -->
-            <?php include('sidebar.php'); ?>
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3 sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <i class="fas fa-home"></i> Página Inicial
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-users"></i> Alunos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/turminhas">
+                                <i class="fas fa-chalkboard-teacher"></i> Turmas
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-            <!-- Dashboard -->
+
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2 text-dark">Seja Bem-Vindo!</h1>
                 </div>
+
 
                 <div class="row g-4">
                     <div class="col-md-4">
@@ -55,7 +86,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                                 <i class="fas fa-chalkboard-teacher fa-5x mb-3 text-success"></i>
                                 <h5 class="card-title">Turmas</h5>
                                 <p class="card-text">Veja as turmas disponíveis e seus detalhes e outras coisas</p>
-                                <a href="/turmas" class="btn btn-dark">Acessar</a>
+                                <a href="#" class="btn btn-dark">Acessar</a>
                             </div>
                         </div>
                     </div>
@@ -71,12 +102,14 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                     </div>
                 </div>
 
+
                 <div class="mt-5">
                     <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
                 </div>
             </main>
         </div>
     </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

@@ -34,12 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $usuario->inserir($dados);
-
-        // Definir a mensagem de sucesso
         $_SESSION['flash_message'] = ['type' => 'success', 'message' => 'Cadastro realizado com sucesso!'];
 
     } catch (Exception $e) {
-        // Se houver um erro, exibir a mensagem
         $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Erro: ' . $e->getMessage()];
     }
 
