@@ -17,6 +17,15 @@ try {
         require 'templates/site/views/formNotas.php';
     });
 
+    SimpleRouter::get('/academico', function() {
+        require 'templates/site/views/academicos.php';
+    });
+
+    SimpleRouter::get('/academico/informacoes', function() {
+        require 'templates/site/views/tabela_academicos.php';
+    });
+
+
     // SimpleRouter::get(URL_SITE.'sobre-nos','SiteControlador@sobre');
     // SimpleRouter::get(URL_SITE.'post/{id}','SiteControlador@post');
     // SimpleRouter::get(URL_SITE.'categoria/{id}','SiteControlador@categoria');

@@ -1,10 +1,8 @@
 <?php
-// Iniciar a sessão 
 session_start();
 
-// Redirecionar se o usuário já estiver logado 
 if (isset($_SESSION['user_id'])) {
-  header('Location: /dashboard'); // Redireciona para a página de dashboard
+  header('Location: /dashboard');
   exit;
 }
 
@@ -18,7 +16,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <base href="/templates/site/">
   <link rel="icon" href="/assets/img/logocooperja.ico" type="image/x-icon">
   <link rel="stylesheet" href="assets/css/login.css">
@@ -46,8 +44,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
         <div class="col-lg-6 position-relative">
           <div class="card bg-glass">
             <div class="card-body px-4 py-5">
-              
-              <!-- Formulário de Login (NAO INTEGRADO) -->
+
               <form action="<?= $BASE_URL ?>login.php" method="POST" id="loginForm">
                 <h2 class="text-center mb-4">Login</h2>
                 <div class="form-floating mb-4 text-secondary">
@@ -59,12 +56,11 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                   <label for="loginPassword">Senha</label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                  <button type="submit" class="btn btn-block">Entrar</button>
                   <p class="mt-3">Não tem conta? <a class="text-decoration-none" href="#" onclick="toggleForm(false); return false;">Cadastre-se</a></p>
                 </div>
               </form>
 
-              <!-- Formulário de Cadastro -->
               <form action="<?= $BASE_URL ?>cadastro.php" method="POST" id="registerForm" class="d-none">
                 <h2 class="text-center mb-4">Criar Conta</h2>
 
@@ -98,7 +94,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                   <label for="registerRole">Função</label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-block">Criar Conta</button>
+                  <button type="submit" class="btn btn-block">Criar Conta</button>
                   <p class="mt-3">Já tem uma conta? <a href="#" class="text-decoration-none" onclick="toggleForm(true); return false;">Entrar</a></p>
                 </div>
               </form>
