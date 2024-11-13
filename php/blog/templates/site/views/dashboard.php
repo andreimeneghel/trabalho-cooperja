@@ -56,7 +56,7 @@ if(isset($_SESSION['user_id'])){
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/turminhas">
+                            <a class="nav-link" href="/turmas">
                                 <i class="fas fa-chalkboard-teacher"></i> Turmas
                             </a>
                         </li>
@@ -89,7 +89,7 @@ if(isset($_SESSION['user_id'])){
                                 <i class="fas fa-chalkboard-teacher fa-5x mb-3 text-success"></i>
                                 <h5 class="card-title">Turmas</h5>
                                 <p class="card-text">Veja as turmas disponíveis e seus detalhes e outras coisas</p>
-                                <a href="/turminhas" class="btn btn-dark">Acessar</a>
+                                <a href="/turmas" class="btn btn-dark">Acessar</a>
                             </div>
                         </div>
                     </div>

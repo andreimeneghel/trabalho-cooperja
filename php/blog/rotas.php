@@ -13,7 +13,7 @@ try {
         require 'templates/site/views/dashboard.php';
     });
 
-    SimpleRouter::get('/turminhas', function() {
+    SimpleRouter::get('/turmas', function() {
         require 'templates/site/views/formNotas.php';
     });
 
