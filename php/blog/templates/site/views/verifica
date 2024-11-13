@@ -1,8 +1,0 @@
-
-
-
-
-// Verificar se o usuário está autenticado como professor
-if ($_SESSION['user_role'] !== 'professor') {
-    die('Acesso restrito! Somente professores podem cadastrar notas e presença.');
-}

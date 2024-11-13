@@ -3,7 +3,6 @@ session_start();
 
 use sistema\Suporte\Conexao;
 
-// Inicializa o banco de dados
 $pdo = Conexao::getInstancia();
 
 // Verificar se o usuário está autenticado como professor
@@ -22,7 +21,6 @@ $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
 $stmt->execute();
 $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Se uma turma for selecionada, buscar as matérias e os alunos com base nas condições específicas
 if (isset($_GET['turma_id'])) {
     $turma_id = $_GET['turma_id'];
 
@@ -62,13 +60,19 @@ if (isset($_GET['turma_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Notas e Presença</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    </head>
 <body class="bg-light">
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Cadastro de Notas e Presença</h1>
-
+    <?php if (isset($_SESSION['flash_message'])): ?>
+      <div class="alert alert-<?= $_SESSION['flash_message']['type'] ?> alert-dismissible fade show custom-alert" role="alert">
+        <?= $_SESSION['flash_message']['message'] ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <?php unset($_SESSION['flash_message']); ?>
+    <?php endif; ?>
     <div class="card p-4 mb-4">
         <form action="" method="get">
             <div class="form-group">
@@ -144,6 +148,8 @@ if (isset($_GET['turma_id'])) {
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
