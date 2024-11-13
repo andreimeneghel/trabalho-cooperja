@@ -17,10 +17,9 @@ use sistema\Suporte\Conexao;
 try {
     $conn = Conexao::getInstancia();
 
-    // ID do usuário logado (você pode obter isso de um session ou outra variável)
-    $userId = $_SESSION['user_id'];  // Certifique-se de ter um ID de usuário logado
+    $userId = $_SESSION['user_id']; 
 
-    // Consulta: Total de matérias do aluno logado (com base na turma do aluno)
+    // total de matérias do aluno logado (com base na turma do aluno)
     $stmtMaterias = $conn->prepare("
         SELECT COUNT(DISTINCT m.id) AS total 
         FROM tb_materias m
@@ -32,7 +31,7 @@ try {
     $stmtMaterias->execute();
     $materiasAtivas = $stmtMaterias->fetch()->total;
 
-    // Consulta: Total de faltas (ausências) do aluno logado
+    // total de faltas do aluno logado
     $stmtFaltas = $conn->prepare("
         SELECT COUNT(*) AS total 
         FROM tb_notas_presenca np
@@ -43,7 +42,7 @@ try {
     $stmtFaltas->execute();
     $faltasRegistradas = $stmtFaltas->fetch()->total;
 
-    // Consulta: Média geral de notas do aluno logado
+    // Média geral de notas do aluno logado
     $stmtMedia = $conn->prepare("
         SELECT AVG(np.nota) AS media 
         FROM tb_notas_presenca np

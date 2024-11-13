@@ -19,8 +19,7 @@ try {
     ");
     $stmtNotas->bindParam(':userId', $userId, PDO::PARAM_INT);
     $stmtNotas->execute();
-    $materiasNotas = $stmtNotas->fetchAll(PDO::FETCH_ASSOC); 
-
+    $materiasNotas = $stmtNotas->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     die("Erro ao carregar os dados: " . $e->getMessage());
 }

@@ -3,7 +3,6 @@ session_start();
 
 use sistema\Suporte\Conexao;
 
-// Inicializa o banco de dados
 $pdo = Conexao::getInstancia();
 
 // Verificar se o usuário está autenticado como professor
@@ -22,7 +21,6 @@ $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
 $stmt->execute();
 $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Se uma turma for selecionada, buscar as matérias e os alunos com base nas condições específicas
 if (isset($_GET['turma_id'])) {
     $turma_id = $_GET['turma_id'];
 

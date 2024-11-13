@@ -28,10 +28,8 @@ if(isset($_SESSION['user_id'])){
 
 <body>
 
-    <!-- Header -->
     <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
-            <!-- Hamburger Button -->
             <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
