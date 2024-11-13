@@ -2,6 +2,11 @@
 session_start();
 $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 
+if ($_SESSION['user_role'] !== 'aluno') {
+    header("Location: /dashboard"); 
+    exit;
+}
+
 use sistema\Suporte\Conexao;
 
 try {
