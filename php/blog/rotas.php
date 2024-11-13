@@ -16,6 +16,14 @@ try {
     SimpleRouter::get('/turminhas', function() {
         require 'templates/site/views/formNotas.php';
     });
+    
+    SimpleRouter::get('/alunos', function() {
+        require 'templates/site/views/alunos.php';
+    });
+
+    SimpleRouter::get('/configuracoes', function() {
+        require 'templates/site/views/configuracoes.php';
+    });
 
     // SimpleRouter::get(URL_SITE.'sobre-nos','SiteControlador@sobre');
     // SimpleRouter::get(URL_SITE.'post/{id}','SiteControlador@post');

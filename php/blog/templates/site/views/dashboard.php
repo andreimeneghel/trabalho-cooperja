@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/alunos">
                                 <i class="fas fa-users"></i> Alunos
                             </a>
                         </li>
@@ -70,7 +70,7 @@
                                 <i class="fas fa-users fa-5x mb-3 text-primary"></i>
                                 <h5 class="card-title">Alunos</h5>
                                 <p class="card-text">Acesse e gerencie os dados dos alunos cadastrados.</p>
-                                <a href="#" class="btn btn-dark">Acessar</a>
+                                <a href="/alunos" class="btn btn-dark">Acessar</a>
                             </div>
                         </div>
                     </div>
