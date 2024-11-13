@@ -56,28 +56,21 @@ if (isset($_GET['turma_id'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Professores</title>
-
+    <title>Cadastro de Notas e Presença</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    
 </head>
+<body class="bg-light">
 
-<body>
 
-    <!-- Incluir o Header -->
-    <?php include('header.php'); ?>
 
-    <div class="container-fluid p-0">
-        <div class="row m-0" style="min-height: 100vh;">
+<div class="container mt-5">
 
-            <!-- Incluir o Sidebar -->
-            <?php include('sidebar.php'); ?>
-    <div class="col-9">
-            <h1 class="text-center mb-4">Cadastro de Notas e Presença</h1>
+    <h1 class="text-center mb-4">Cadastro de Notas e Presença</h1>
     <?php if (isset($_SESSION['flash_message'])): ?>
       <div class="alert alert-<?= $_SESSION['flash_message']['type'] ?> alert-dismissible fade show custom-alert" role="alert">
         <?= $_SESSION['flash_message']['message'] ?>
@@ -85,7 +78,7 @@ if (isset($_GET['turma_id'])) {
       </div>
       <?php unset($_SESSION['flash_message']); ?>
     <?php endif; ?>
-    <div class="card p-4 mb-4 ">
+    <div class="card p-4 mb-4">
         <form action="" method="get">
             <div class="form-group">
                 <label for="turma_id">Selecione uma Turma:</label>
@@ -157,11 +150,11 @@ if (isset($_GET['turma_id'])) {
             Não há alunos cadastrados nesta turma para esta matéria.
         </div>
     <?php endif; ?>
-    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-</body>
 
+
+</body>
 </html>
