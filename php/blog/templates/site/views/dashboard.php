@@ -3,6 +3,8 @@
 
     session_start();
 
+
+
 ?>
 
 
@@ -90,7 +92,7 @@
                                 <i class="fas fa-cogs fa-5x mb-3 text-warning"></i>
                                 <h5 class="card-title">Configurações</h5>
                                 <p class="card-text">Ajuste as configurações da página conforme necessário.</p>
-                                <a href="#" class="btn btn-dark">Acessar</a>
+                                <a href="/mudarcadprof" class="btn btn-dark">Acessar</a>
                             </div>
                         </div>
                     </div>
