@@ -30,7 +30,7 @@ try {
     });
 
     SimpleRouter::get('/academico/informacoes', function() {
-a       require 'templates/site/views/tabela_academicos.php';
+       require 'templates/site/views/tabela_academicos.php';
     });
 
 
