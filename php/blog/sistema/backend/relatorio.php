@@ -21,7 +21,7 @@ try {
             JOIN tb_alunos a ON np.tb_aluno_id = a.id
             WHERE np.tb_materia_id = :materia_id";
 
-    // Filtra por turma, caso necessário
+    // Filtra por turma
     if ($turma_id) {
         $sql .= " AND a.tb_turma_id = :turma_id";
     }

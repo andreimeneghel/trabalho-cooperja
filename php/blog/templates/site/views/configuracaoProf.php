@@ -2,6 +2,9 @@
 
 require __DIR__ . '/../../../sistema/Suporte/Sessao.php';
 
+$BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
+
+
 use Sistema\Suporte\Sessao;
 use sistema\Modelo\ProfessoresModelo;
 use sistema\Modelo\UsuarioModelo;
@@ -24,6 +27,7 @@ $username = $dadosProf['professor_username'];
 $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -124,6 +128,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <form action="<?=$BASE_URL?>usuarioProfAtualizacao.php" id="formAtualizar" method="POST">
                 <form action="<?= $BASE_URL ?>usuarioProfAtualizacao.php" id="formAtualizar" method="POST">
                     <div class="form-group mb-4">
                         <label for="professorUserVerf">Digite seu email para atualizar o cadastro:</label>
@@ -132,7 +137,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
 
                     <div class="form-group mb-4">
                         <label for="professorUsernameAt">Username (Email):</label>
-                        <input type="password" class="form-control form-control-lg" id="professorUsernameAt" name="email" value="<?= $dadosProf['professor_username'] ?>" disabled required>
+                        <input type="email" class="form-control form-control-lg" id="professorUsernameAt" name="email" value="<?= $dadosProf['professor_username'] ?>" disabled required>
                     </div>
 
                     <div class="form-group mb-4">

@@ -10,14 +10,11 @@ $sessao = new Sessao;
 $user = new UsuarioModelo;
 $id = $sessao->user_id;
 
-echo $id;
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-var_dump($dados);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    echo "bbbbb";
 
     $email = filter_var($dados['email'], FILTER_SANITIZE_EMAIL);
     $password = $dados['password'];
@@ -36,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email inválido.'];
-        echo "zzzzzz";
         header('Location: /mudarcadprof');
         exit;
     }
@@ -44,8 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
 
         $userNum = $user->contarEm($email);
-
-        echo $userNum;
 
         if ($userNum == 0) {
             $user->atualizar($dados, $id);
