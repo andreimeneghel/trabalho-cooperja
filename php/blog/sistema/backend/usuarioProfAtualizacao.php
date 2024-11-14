@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $dados['password'];
 
     if (empty($email)) {
-        $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email vazio.'];
+        $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email vazio ou inválido.'];
         header('Location: /mudarcadprof');
         exit;
     } 

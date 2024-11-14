@@ -2,9 +2,6 @@
 
 require __DIR__ . '/../../../sistema/Suporte/Sessao.php';
 
-$BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
-
-
 use Sistema\Suporte\Sessao;
 use sistema\Modelo\ProfessoresModelo;
 use sistema\Modelo\UsuarioModelo;
@@ -23,6 +20,8 @@ $username = $dadosProf['professor_username'];
 // var_dump($dadosProf);
 // var_dump($sessao->user_id);
 // var_dump($_SESSION);
+
+$BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 
 ?>
 
@@ -102,7 +101,7 @@ $username = $dadosProf['professor_username'];
                         </div>
 
                         <div class="text-center mt-5">
-                            <button class="btn btn-primary btn-lg px-5 py-3" id="btnAtualizar">Atualiar cadastro</button>
+                            <button class="btn btn-primary btn-lg px-5 py-3" id="btnAtualizar">Atualizar cadastro</button>
                         </div>
                     </div>
                 </form>
@@ -213,6 +212,18 @@ $username = $dadosProf['professor_username'];
             $campoUV = document.getElementById("professorUserVerf").disabled = true;
         }
     })
+
+        // Adicionar evento de envio ao formulário
+    document.getElementById('formAtualizar').addEventListener('submit', function(event) {
+        const professorUserVerf = document.getElementById('professorUserVerf').value.trim();
+        
+        // Verifica se o campo está vazio
+        if (professorUserVerf === "") {
+            event.preventDefault();  // Impede o envio do formulário
+            alert("Por favor, preencha o campo de email para atualizar o cadastro.");
+        }
+    });
+
 
 </script>
 
