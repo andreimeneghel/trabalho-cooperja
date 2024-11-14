@@ -34,11 +34,16 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Permissão</title>
     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="/templates/site/assets/css/configuracoes.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
+
+<?php
+include 'header.php';
+?>
 
     <?php if (isset($_SESSION['flash_message'])): ?>
         <div class="alert alert-<?= $_SESSION['flash_message']['type'] ?> alert-dismissible fade show custom-alert" role="alert">
@@ -66,8 +71,12 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
         </div>
     </div>
 
+    <div class="conf row container-fluid">
     <?php if ($dadosProf): ?>
-        <div class="container-fluid mt-5">
+        <?php
+            include 'sidebar.php';
+        ?>
+        <div class="container-fluid mt-5 col-9 mb-4 ">
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8"> <!-- Aumentamos a largura da coluna -->
                     <h4 class="text-center mb-4">Detalhes do Professor</h4>
@@ -97,10 +106,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                             <input type="text" class="form-control form-control-lg" id="professorMaterias" value="<?= $dadosProf['materias'] ?>" readonly>
                         </div>
 
-                        <div class="d-flex flex-row justify-content-between">
-                            <div class="text-center mt-5">
-                                <a href="/dashboard" class="btn btn-primary btn-lg px-5 py-3">Voltar para o Dashboard</a>
-                            </div>
+                        <div class="d-flex flex-row justify-content-center">
 
                             <div class="text-center mt-5">
                                 <button class="btn btn-primary btn-lg px-5 py-3" id="btnAtualizar">Atualizar cadastro</button>
@@ -226,7 +232,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
             }
         });
     </script>
-
+</div>
 </body>
 
 </html>
