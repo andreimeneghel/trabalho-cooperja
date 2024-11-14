@@ -28,7 +28,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
             <?php include('sidebar.php'); ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="title h2">Seja Bem-Vindo!</h1>
+                    <h1 class="title h2 text-white">Seja Bem-Vindo!</h1>
                 </div>
 
                 <div class="row g-4">
@@ -62,35 +62,8 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                             </div>
                         </div>
                     </div>
-                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" data-bs-interval="8000">
-                        <img src="templates/site/assets/img/vanir/1.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" data-bs-interval="2000">
-                        <img src="templates/site/assets/img/vanir/2.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                        <img src="templates/site/assets/img/vanir/3.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                        <img src="templates/site/assets/img/vanir/4.png" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                    </div>           
-                </div>
-
-                <div class="mt-5">
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-                </div>
+                   
+             
             </main>
         </div>
     </div>
