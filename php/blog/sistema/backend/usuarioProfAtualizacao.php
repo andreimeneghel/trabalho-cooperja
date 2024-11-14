@@ -21,19 +21,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($email)) {
         $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email vazio ou inválido.'];
-        header('Location: /mudarcadprof');
+        header('Location: /configuracoes');
         exit;
     }
 
     if (empty($password)) {
         $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Senha vazia.'];
-        header('Location: /mudarcadprof');
+        header('Location: /configuracoes');
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email inválido.'];
-        header('Location: /mudarcadprof');
+        header('Location: /configuracoes');
         exit;
     }
 
@@ -44,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($userNum == 0) {
             $user->atualizar($dados, $id);
             $_SESSION['flash_message'] = ['type' => 'success', 'message' => 'Atualizado com sucesso.'];
-            header('Location: /mudarcadprof');
+            header('Location: /configuracoes');
             exit;
         } else {
             $_SESSION['flash_message'] = ['type' => 'danger', 'message' => 'Email já existe.'];
-            header('Location: /mudarcadprof');
+            header('Location: /configuracoes');
             exit;
         }
     } catch (Exception $e) {
