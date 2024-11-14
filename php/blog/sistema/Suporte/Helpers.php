@@ -2,18 +2,20 @@
 
 namespace sistema\Suporte;
 
-class Helpers{
+class Helpers
+{
 
-    
-    public static function url(?string $url = null): string {
+
+    public static function url(?string $url = null): string
+    {
         $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
         $ambiente = ($servidor === 'localhost' ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
-    
-        
+
+
         if (is_null($url) || $url === '') {
-            return $ambiente . '/'; 
+            return $ambiente . '/';
         }
-    
+
         return str_starts_with($url, '/') ? $ambiente . $url : $ambiente . '/' . $url;
     }
 
@@ -33,23 +35,24 @@ class Helpers{
      * @param string $email recebe um email válido
      * @return bool retorna true se for válido, false caso contrário
      */
-    public static function validarEmail(string $email): bool {
+    public static function validarEmail(string $email): bool
+    {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
-    public static function ola(): void{
+    public static function ola(): void
+    {
         echo 'Olá Mundo';
     }
 
 
-    public static function localhost(): bool{
+    public static function localhost(): bool
+    {
         $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
 
-        if($servidor == 'localhost'){
+        if ($servidor == 'localhost') {
             return true;
         }
         return false;
     }
-
-
 }

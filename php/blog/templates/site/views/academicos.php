@@ -3,13 +3,13 @@ session_start();
 $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 
 
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
     if ($_SESSION['user_role'] !== 'aluno') {
-        header("Location: /"); 
+        header("Location: /");
         exit;
     }
 } else {
-    header("Location: /"); 
+    header("Location: /");
 }
 
 use sistema\Suporte\Conexao;
@@ -17,9 +17,9 @@ use sistema\Suporte\Conexao;
 try {
     $conn = Conexao::getInstancia();
 
-    $userId = $_SESSION['user_id']; 
+    $userId = $_SESSION['user_id'];
 
-    // total de matérias do aluno logado (com base na turma do aluno)
+    // total de matérias do aluno logado
     $stmtMaterias = $conn->prepare("
         SELECT COUNT(DISTINCT m.id) AS total 
         FROM tb_materias m
@@ -52,8 +52,7 @@ try {
     $stmtMedia->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $stmtMedia->execute();
     $mediaGeral = $stmtMedia->fetch()->media;
-    $mediaGeral = $mediaGeral !== null ? number_format($mediaGeral, 1) : 0;    
-
+    $mediaGeral = $mediaGeral !== null ? number_format($mediaGeral, 1) : 0;
 } catch (Exception $e) {
     die("Erro ao carregar os dados: " . $e->getMessage());
 }

@@ -2,6 +2,7 @@
 session_start();
 
 use sistema\Suporte\Conexao;
+
 $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 
 $pdo = Conexao::getInstancia();
@@ -68,16 +69,10 @@ if (isset($_GET['turma_id'])) {
 </head>
 
 <body>
-
-    <!-- Incluir o Header -->
     <?php include('header.php'); ?>
-
     <div class="container-fluid p-0">
         <div class="row m-0">
-
-            <!-- Incluir o Sidebar -->
             <?php include('sidebar.php'); ?>
-
             <div class="col-md-9">
                 <h1 class="text-center m-4">Cadastro de Notas e Presença</h1>
 
@@ -163,7 +158,6 @@ if (isset($_GET['turma_id'])) {
                 <?php endif; ?>
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

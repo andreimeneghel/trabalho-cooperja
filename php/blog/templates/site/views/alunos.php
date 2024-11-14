@@ -32,7 +32,7 @@ if (isset($_GET['turma_id'])) {
                                FROM tb_alunos a 
                                WHERE a.tb_turma_id = :turma_id 
                                AND a.nome LIKE :nome_aluno");
-        $nome_aluno_param = '%' . $nome_aluno . '%'; 
+        $nome_aluno_param = '%' . $nome_aluno . '%';
         $stmt->bindParam(':turma_id', $turma_id, PDO::PARAM_INT);
         $stmt->bindParam(':nome_aluno', $nome_aluno_param, PDO::PARAM_STR);
     } else {

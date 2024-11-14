@@ -32,9 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verifica se o usuário é aluno
             if ($user['role'] === 'aluno') {
-                // Conexão com o banco de dados para pegar as matérias do aluno
                 $pdo = Conexao::getInstancia();
-
                 // Consulta para pegar as matérias do aluno
                 $sql = "
                     SELECT m.nome AS materia_nome
@@ -46,8 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':user_id', $user['id'], PDO::PARAM_INT);
                 $stmt->execute();
-
-                // Pega as matérias do aluno
                 $materias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 // Armazena as matérias em uma variável de sessão
