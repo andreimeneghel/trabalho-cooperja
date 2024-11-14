@@ -22,7 +22,7 @@ try {
     });
 
     SimpleRouter::get('/academico/informacoes', function() {
-        require 'templates/site/views/tabela_academicos.php';
+a       require 'templates/site/views/tabela_academicos.php';
     });
 
 
