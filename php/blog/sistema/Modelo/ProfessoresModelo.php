@@ -55,6 +55,37 @@ class ProfessoresModelo {
         $stmt->execute([$id]);
     }
 
+    public function lerTudo (int $id): ?array {
+        $query = "SELECT 
+                    p.id AS professor_id,
+                    p.nome AS professor_nome,
+                    p.nascimento AS professor_nascimento,
+                    p.admissao AS professor_admissao,
+                    u.email AS professor_username,    
+                    u.password AS professor_senha,    
+                    GROUP_CONCAT(t.nome ORDER BY t.nome) AS turmas, 
+                    GROUP_CONCAT(m.nome ORDER BY m.nome) AS materias  
+                FROM 
+                    tb_professores p
+                JOIN 
+                    tb_users u ON p.tb_user_id = u.id
+                LEFT JOIN 
+                    tb_turmas t ON p.id = t.tb_professor_id
+                LEFT JOIN 
+                    tb_materias m ON t.tb_materia_id = m.id
+                WHERE 
+                    u.id = ? 
+                GROUP BY 
+                    p.id, u.email, u.password;
+                ";
+
+        $stmt = Conexao::getInstancia()->prepare($query);
+        $stmt->execute([$id]);
+        $resultado = $stmt->fetch();
+
+        return $resultado ? (array) $resultado : null;
+    }
+
 
 
 

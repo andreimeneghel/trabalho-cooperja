@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: /");
-    exit;
-}
-
-$BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +59,7 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
                                 <i class="fas fa-cogs fa-5x mb-3 text-warning"></i>
                                 <h5 class="card-title">Configurações</h5>
                                 <p class="card-text">Ajuste as configurações da página conforme necessário.</p>
-                                <a href="#" class="btn btn-dark">Acessar</a>
+                                <a href="/mudarcadprof" class="btn btn-dark">Acessar</a>
                             </div>
                         </div>
                     </div>
