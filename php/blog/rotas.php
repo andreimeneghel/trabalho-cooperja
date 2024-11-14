@@ -21,10 +21,6 @@ try {
         require 'templates/site/views/alunos.php';
     });
 
-    SimpleRouter::get('/configuracoes', function() {
-        require 'templates/site/views/configuracoes.php';
-    });
-
     SimpleRouter::get('/academico', function() {
         require 'templates/site/views/academicos.php';
     });
@@ -33,8 +29,7 @@ try {
         require 'templates/site/views/tabela_academicos.php';
     });
 
-
-    SimpleRouter::get('/mudarcadprof', function() {
+    SimpleRouter::get('/configuracoes', function() {
         require 'templates/site/views/configuracaoProf.php';
     });
 
