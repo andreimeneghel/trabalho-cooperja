@@ -70,34 +70,24 @@ try {
 </head>
 
 <body>
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Dashboard Acadêmico</a>
-            <div class="d-flex ms-auto">
-                <a class="btn btn-outline-light btn-sm" href="<?= $BASE_URL ?>logout.php">Sair</a>
-            </div>
-        </div>
-    </header>
+    <?php include 'header.php' ?>
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-lg-2 d-lg-block sidebar collapse">
+            <nav id="sidebarMenu" style="background: #1d2c2b;" class="col-lg-2 d-lg-block sidebar collapse">
                 <div class="pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/academico">
+                            <a class="nav-link active text-warning" aria-current="page" href="/academico">
                                 <i class="fas fa-home"></i> Página Inicial
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/academico/informacoes">
+                            <a class="nav-link text-warning" href="/academico/informacoes">
                                 <i class="fas fa-graduation-cap"></i> Minhas Notas
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/sistema/backend/logout.php">
+                            <a class="nav-link text-warning" href="/sistema/backend/logout.php">
                                 <i class="fas fa-sign-out-alt"></i> Sair
                             </a>
                         </li>

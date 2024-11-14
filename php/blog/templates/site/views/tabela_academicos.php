@@ -38,14 +38,7 @@ try {
 
 <body>
 
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Dashboard Acadêmico</a>
-            <div class="d-flex ms-auto">
-                <a class="btn btn-outline-light btn-sm" href="<?= $BASE_URL ?>logout.php">Sair</a>
-            </div>
-        </div>
-    </header>
+    <?php include 'header.php' ?>
 
     <div class="container-fluid">
         <main class="container mt-5 mx-auto">
