@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($userNum == 0) {
             $user->atualizar($dados, $id);
-            $_SESSION['flash_message'] = ['type' => 'sucess', 'message' => 'Atualizado com sucesso.'];
+            $_SESSION['flash_message'] = ['type' => 'success', 'message' => 'Atualizado com sucesso.'];
             header('Location: /mudarcadprof');
             exit;
         } 

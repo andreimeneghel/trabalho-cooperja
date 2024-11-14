@@ -13,9 +13,26 @@ try {
         require 'templates/site/views/dashboard.php';
     });
 
-    SimpleRouter::get('/turminhas', function() {
+    SimpleRouter::get('/turmas', function() {
         require 'templates/site/views/formNotas.php';
     });
+    
+    SimpleRouter::get('/alunos', function() {
+        require 'templates/site/views/alunos.php';
+    });
+
+    SimpleRouter::get('/configuracoes', function() {
+        require 'templates/site/views/configuracoes.php';
+    });
+
+    SimpleRouter::get('/academico', function() {
+        require 'templates/site/views/academicos.php';
+    });
+
+    SimpleRouter::get('/academico/informacoes', function() {
+        require 'templates/site/views/tabela_academicos.php';
+    });
+
 
     SimpleRouter::get('/mudarcadprof', function() {
         require 'templates/site/views/configuracaoProf.php';

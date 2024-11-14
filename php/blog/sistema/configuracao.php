@@ -15,8 +15,8 @@ define('SITE_NOME','Cooperja');
 define('SITE_DESCRIÇÃO','Cooperja SLA');
 
 //urls do sistema
-define('URL_PRODUCAO','http://localhost:3004');
-define('URL_DESENVOLVIMENTO','http://localhost:3004');
+define('URL_PRODUCAO','http://localhost:8000');
+define('URL_DESENVOLVIMENTO','http://localhost:8000');
 
 
 

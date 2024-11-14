@@ -21,6 +21,8 @@ $username = $dadosProf['professor_username'];
 // var_dump($sessao->user_id);
 // var_dump($_SESSION);
 
+$BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . "/sistema/backend/";
+
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +124,7 @@ $username = $dadosProf['professor_username'];
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="http://localhost:8080/sistema/backend/usuarioProfAtualizacao.php" id="formAtualizar" method="POST">
+                <form action="<?= $BASE_URL ?>usuarioProfAtualizacao.php" id="formAtualizar" method="POST">
                     <div class="form-group mb-4">
                         <label for="professorUserVerf">Digite seu email para atualizar o cadastro:</label>
                         <input type="email" class="form-control form-control-lg" id="professorUserVerf">
