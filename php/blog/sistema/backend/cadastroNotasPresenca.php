@@ -1,19 +1,15 @@
 <?php
 session_start();
 
-// Verificar se o usuário é um professor
 if ($_SESSION['user_role'] !== 'professor') {
     die('Acesso restrito! Somente professores podem cadastrar notas e presença.');
 }
 
-// Conexão com o banco de dados
 require_once '../Suporte/Conexao.php';
 use sistema\Suporte\Conexao;
 
-// Inicializa o banco de dados
 $pdo = Conexao::getInstancia();
 
-// Verificar se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Receber os dados do formulário
     $materia_id = $_POST['materia_id'];

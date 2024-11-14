@@ -5,26 +5,27 @@ namespace sistema\Modelo;
 use Conexao;
 use sistema\Suporte\Conexao as SuporteConexao;
 
-class AlunosModelo {
+class AlunosModelo
+{
 
-    public function ler(string $termos = null): array {
+    public function ler(string $termos = null): array
+    {
 
         if ($termos == null) {
             $clausula = "";
-        }
-
-        else {
+        } else {
             $clausula = $termos;
         }
 
-        $query = "SELECT * FROM tb_alunos ".$clausula;
+        $query = "SELECT * FROM tb_alunos " . $clausula;
         $stmt = SuporteConexao::getInstancia()->query($query);
         $resultado = $stmt->fetchAll();
 
         return $resultado;
     }
 
-    public function contar(): int {
+    public function contar(): int
+    {
 
         $query = "SELECT COUNT(*) FROM tb_alunos";
         $stmt = SuporteConexao::getInstancia()->query($query);
@@ -33,40 +34,37 @@ class AlunosModelo {
         return $resultado;
     }
 
-    public function inserir(array $dados): void {
+    public function inserir(array $dados): void
+    {
 
-        $query = "INSERT INTO `tb_alunos` (`nome`, `nascimento`, `tb_user_id`, `tb_turma_id`) VALUES (?, ?, ?, ?)";       
+        $query = "INSERT INTO `tb_alunos` (`nome`, `nascimento`, `tb_user_id`, `tb_turma_id`) VALUES (?, ?, ?, ?)";
         $stmt = SuporteConexao::getInstancia()->prepare($query);
-        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['tb_user_id'], $dados['tb_turma_id']]);     
+        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['tb_user_id'], $dados['tb_turma_id']]);
     }
 
-    public function pesquisa(string $busca):array
-{
+    public function pesquisa(string $busca): array
+    {
 
-    $query = "SELECT * FROM tb_alunos WHERE titulo LIKE '%{$busca}%' ";
-    $stmt = SuporteConexao::getInstancia()->query($query);
-    $resultado = $stmt->fetchAll();
+        $query = "SELECT * FROM tb_alunos WHERE titulo LIKE '%{$busca}%' ";
+        $stmt = SuporteConexao::getInstancia()->query($query);
+        $resultado = $stmt->fetchAll();
 
-    return $resultado;
-}
+        return $resultado;
+    }
 
-    public function atualizar (array $dados, int $id):void {
-        
-        $query = "UPDATE tb_alunos SET nome = ?, nascimento = ?, tb_user_id = ?, tb_turma_id = ? WHERE id = ?"; 
+    public function atualizar(array $dados, int $id): void
+    {
+
+        $query = "UPDATE tb_alunos SET nome = ?, nascimento = ?, tb_user_id = ?, tb_turma_id = ? WHERE id = ?";
         $stmt = SuporteConexao::getInstancia()->prepare($query);
         $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['tb_user_id'], $dados['tb_turma_id'], $id]);
     }
 
-    public function deletar (int $id):void {
-        
-        $query = "DELETE FROM tb_alunos WHERE id = ?"; 
+    public function deletar(int $id): void
+    {
+
+        $query = "DELETE FROM tb_alunos WHERE id = ?";
         $stmt = SuporteConexao::getInstancia()->prepare($query);
         $stmt->execute([$id]);
     }
-
-
-
-
 }
-
-?>

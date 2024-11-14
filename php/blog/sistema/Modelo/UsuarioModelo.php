@@ -2,86 +2,80 @@
 
 namespace sistema\Modelo;
 
-require_once '../Suporte/Conexao.php';
+require_once __DIR__ . '/../Suporte/Conexao.php';
 
 use sistema\Suporte\Conexao;
 
-class UsuarioModelo {
-
-    public function ler(string $termos = null): array {
-
+class UsuarioModelo
+{
+    public function ler(string $termos = null): array
+    {
         if ($termos == null) {
             $clausula = "";
-        }
-
-        else {
+        } else {
             $clausula = $termos;
         }
-
-        $query = "SELECT * FROM tb_users ".$clausula;
+        $query = "SELECT * FROM tb_users " . $clausula;
         $stmt = Conexao::getInstancia()->query($query);
         $resultado = $stmt->fetchAll();
-
         return $resultado;
     }
 
-    public function contar(): int {
-
+    public function contar(): int
+    {
         $query = "SELECT COUNT(*) FROM tb_users";
         $stmt = Conexao::getInstancia()->query($query);
         $resultado = $stmt->fetchColumn();
-
         return $resultado;
     }
 
-    public function contarEm(string $email): int {
+    public function contarEm(string $email): int
+    {
 
         $query = "SELECT COUNT(*) FROM tb_users WHERE email = ?";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute([$email]);
-        
-        // Obter o resultado (contagem de registros)
         $resultado = $stmt->fetchColumn();
-        
-        return (int) $resultado; // Retorna o número de ocorrências
+
+        return (int) $resultado;
     }
 
-    public function lerEm(string $email): ?array {
+    public function lerEm(string $email): ?array
+    {
 
         $query = "SELECT * FROM tb_users WHERE email = ?";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute([$email]);
-        $resultado = $stmt->fetch(); 
-        
+        $resultado = $stmt->fetch();
+
         return $resultado ? (array) $resultado : null;
     }
 
-    public function inserir(array $dados): void {
+    public function inserir(array $dados): void
+    {
 
         $passwordHash = password_hash($dados['password'], PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO `tb_users` (`email`, `password`, `role`) VALUES (?, ?, ?)";       
+        $query = "INSERT INTO `tb_users` (`email`, `password`, `role`) VALUES (?, ?, ?)";
         $stmt = Conexao::getInstancia()->prepare($query);
-        $stmt->execute([$dados['email'], $passwordHash, $dados['role']]);     
+        $stmt->execute([$dados['email'], $passwordHash, $dados['role']]);
     }
 
-    public function atualizar (array $dados, int $id):void {
-        
-        $query = "UPDATE tb_professores SET nome = ?, nascimento = ?, admissao = ?, tb_user_id = ? WHERE id = ?"; 
+    public function atualizar(array $dados, int $id): void
+    {
+
+        $passwordHash = password_hash($dados['password'], PASSWORD_DEFAULT);
+
+        $query = "UPDATE tb_users SET `email` = ?, `password` = ? WHERE id = ?";
         $stmt = Conexao::getInstancia()->prepare($query);
-        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['admissao'], $dados['tb_user_id'], $id]);
+        $stmt->execute([$dados['email'], $passwordHash, $id]);
     }
 
-    public function deletar (int $id):void {
-        
-        $query = "DELETE FROM tb_professores WHERE id = ?"; 
+    public function deletar(int $id): void
+    {
+
+        $query = "DELETE FROM tb_users WHERE id = ?";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute([$id]);
     }
-
-
-
-
 }
-
-?>

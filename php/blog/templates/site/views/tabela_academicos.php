@@ -9,9 +9,9 @@ try {
     $conn = Conexao::getInstancia();
     $userId = $_SESSION['user_id'];
 
-    // Consulta para pegar as matérias e as notas do aluno
+    // Consulta para pegar as matérias, notas e presenças do aluno
     $stmtNotas = $conn->prepare("
-        SELECT m.nome AS materia, np.nota
+        SELECT m.nome AS materia, np.nota, np.presenca
         FROM tb_notas_presenca np
         JOIN tb_materias m ON m.id = np.tb_materia_id
         JOIN tb_alunos a ON a.id = np.tb_aluno_id
@@ -51,7 +51,7 @@ try {
         <main class="container mt-5 mx-auto">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2 text-dark">Tabela Acadêmica</h1>
-                <p class="text-muted">Aqui você pode visualizar suas matérias e notas.</p>
+                <p class="text-muted">Aqui você pode visualizar suas matérias, notas e faltas.</p>
             </div>
 
             <div class="row g-3 mb-4">
@@ -63,19 +63,22 @@ try {
                                     <tr>
                                         <th>Matéria</th>
                                         <th>Nota</th>
+                                        <th>Faltas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     if ($materiasNotas) {
                                         foreach ($materiasNotas as $materiaNota) {
+                                            $faltas = 1 - $materiaNota['presenca']; // Calcula o número de faltas
                                             echo "<tr>
                                                 <td>{$materiaNota['materia']}</td>
                                                 <td>{$materiaNota['nota']}</td>
+                                                <td>{$faltas}</td>
                                             </tr>";
                                         }
                                     } else {
-                                        echo "<tr><td colspan='2'>Nenhuma matéria encontrada</td></tr>";
+                                        echo "<tr><td colspan='3'>Nenhuma matéria encontrada</td></tr>";
                                     }
                                     ?>
                                 </tbody>

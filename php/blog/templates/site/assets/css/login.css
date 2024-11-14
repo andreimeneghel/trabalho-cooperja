@@ -5,26 +5,17 @@
 .background-radial-gradient {
   height: 100vh;
   background-color: #245852;
-  /* Cor verde principal da Cooperja */
   background-image: radial-gradient(650px circle at 0% 0%,
       #366a5f 15%,
-      /* Tom mais claro de verde */
       #2f5e56 35%,
-      /* Tom intermediário */
       #245852 75%,
-      /* Cor verde principal */
       #1e4944 80%,
-      /* Tom mais escuro */
       transparent 100%),
     radial-gradient(1250px circle at 100% 100%,
       #366a5f 15%,
-      /* Tom mais claro */
       #2f5e56 35%,
-      /* Tom intermediário */
       #245852 75%,
-      /* Cor verde principal */
       #1e4944 80%,
-      /* Tom mais escuro */
       transparent 100%);
 }
 
