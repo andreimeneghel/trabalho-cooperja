@@ -32,7 +32,7 @@ if (isset($_GET['turma_id'])) {
                                FROM tb_alunos a 
                                WHERE a.tb_turma_id = :turma_id 
                                AND a.nome LIKE :nome_aluno");
-        $nome_aluno_param = '%' . $nome_aluno . '%'; // Acentuar a busca
+        $nome_aluno_param = '%' . $nome_aluno . '%'; 
         $stmt->bindParam(':turma_id', $turma_id, PDO::PARAM_INT);
         $stmt->bindParam(':nome_aluno', $nome_aluno_param, PDO::PARAM_STR);
     } else {
@@ -41,7 +41,7 @@ if (isset($_GET['turma_id'])) {
                                WHERE a.tb_turma_id = :turma_id");
         $stmt->bindParam(':turma_id', $turma_id, PDO::PARAM_INT);
     }
-    
+
     $stmt->execute();
     $alunos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -49,128 +49,64 @@ if (isset($_GET['turma_id'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Alunos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-    .header-bg {
-        background-color: #343a40;
-    }
-    .header-text {
-        font-size: 1.2rem;
-    }
-    .form-label {
-        font-weight: bold;
-    }
-    .card-container {
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .list-group-item {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        margin-bottom: 5px;
-    }
-    .main-container {
-        background-color: #343a40; /* Fundo escuro */
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        color: #ffffff; /* Cor do texto dentro do container para branco */
-    }
-
-    .search-container {
-        margin-bottom: 30px;
-    }
-    .alunos-container {
-        background-color: #ffffff; /* Cor de fundo mais clara para a lista de alunos */
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-</style>
-
 </head>
+
 <body>
 
-    <?php
-    include 'header.php';
-    ?>
+    <?php include 'header.php'; ?>
+    <div class="row m-0">
 
+        <?php include 'sidebar.php'; ?>
 
+        <div class="container mt-3 col-9">
+            <h2 class="mb-4 text-dark text-center">Selecionar Turma e Ver Alunos</h2>
 
-<div class="row m-0">
-    
-<?php
-    include 'sidebar.php';
-    ?>
-    
-    <div class="container mt-5 col-9">
-        <h2 class="mb-4 text-dark">Selecionar Turma e Ver Alunos</h2>
-        
-        <!-- Container com fundo diferente englobando a pesquisa e os alunos -->
-        <div class="main-container">
-            <div class="search-container">
-                <form method="GET" action="" class="d-flex flex-wrap gap-3">
-                    <div class="w-100 w-md-auto">
-                        <label for="turmaSelect" class="form-label">Selecione uma Turma:</label>
-                        <select class="form-select" name="turma_id" id="turmaSelect" onchange="this.form.submit()">
-                            <option value="">Escolha uma turma...</option>
-                            <?php foreach ($turmas as $turma): ?>
-                                <option value="<?= $turma['id']; ?>" <?= isset($_GET['turma_id']) && $_GET['turma_id'] == $turma['id'] ? 'selected' : '' ?>>
-                                    <?= $turma['nome']; ?>
-                                </option>
+            <div class="main-container p-4 rounded shadow-sm" style="background-color: #f9f9f9;">
+                <div class="search-container">
+                    <form method="GET" action="" class="d-flex flex-wrap gap-3 align-items-end">
+                        <div class="flex-grow-1">
+                            <label for="turmaSelect" class="form-label fw-bold">Selecione uma Turma:</label>
+                            <select class="form-select border-primary" name="turma_id" id="turmaSelect" onchange="this.form.submit()">
+                                <option value="" class="text-muted">Escolha uma turma...</option>
+                                <?php foreach ($turmas as $turma): ?>
+                                    <option value="<?= $turma['id']; ?>" <?= isset($_GET['turma_id']) && $_GET['turma_id'] == $turma['id'] ? 'selected' : '' ?>>
+                                        <?= $turma['nome']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="flex-grow-1">
+                            <label for="nome_aluno" class="form-label fw-bold">Pesquisar Aluno:</label>
+                            <input type="text" class="form-control border-primary" name="nome_aluno" id="nome_aluno" value="<?= htmlspecialchars($nome_aluno); ?>" placeholder="Nome do aluno">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="alunos-container mt-5">
+                    <h3 class="text-secondary text-center mb-3">Alunos:</h3>
+                    <ul class="list-group list-group-flush shadow-sm" id="alunosList" style="background-color: #fff;">
+                        <?php if (!empty($alunos)): ?>
+                            <?php foreach ($alunos as $aluno): ?>
+                                <li class="list-group-item text-dark"><?= $aluno['nome']; ?></li>
                             <?php endforeach; ?>
-                        </select>
-                    </div>
-                    <div class="w-100 w-md-auto">
-                        <label for="nome_aluno" class="form-label">Pesquisar Aluno:</label>
-                        <input type="text" class="form-control" name="nome_aluno" id="nome_aluno" value="<?= htmlspecialchars($nome_aluno); ?>" placeholder="Nome do aluno">
-                    </div>
-                </form>
-            </div>
-
-            <div class="alunos-container">
-                <h3 class="text-secondary">Alunos:</h3>
-                <ul class="list-group list-group-flush" id="alunosList">
-                    <?php if (!empty($alunos)): ?>
-                        <?php foreach ($alunos as $aluno): ?>
-                            <li class="list-group-item"><?= $aluno['nome']; ?></li>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <li class="list-group-item">Nenhum aluno encontrado para esta turma.</li>
-                    <?php endif; ?>
-                </ul>
+                        <?php else: ?>
+                            <li class="list-group-item text-muted text-center">Nenhum aluno encontrado para esta turma.</li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-
-    <script>
-        $('#nome_aluno').on('input', function() {
-            var turmaId = $('#turmaSelect').val();
-            var nomeAluno = $(this).val();
-            if (turmaId) {
-                $.ajax({
-                    url: 'seu_arquivo.php',
-                    method: 'GET',
-                    data: {
-                        turma_id: turmaId,
-                        nome_aluno: nomeAluno
-                    },
-                    success: function(response) {
-                        $('#alunosList').html(response);
-                    }
-                });
-            }
-        });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </div>
 </body>
+
+
 </html>
-
-
