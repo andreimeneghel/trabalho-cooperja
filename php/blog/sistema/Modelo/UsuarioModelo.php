@@ -2,7 +2,7 @@
 
 namespace sistema\Modelo;
 
-require_once '../Suporte/Conexao.php';
+require_once __DIR__ . '/../Suporte/Conexao.php';
 
 use sistema\Suporte\Conexao;
 
@@ -66,15 +66,17 @@ class UsuarioModelo {
     }
 
     public function atualizar (array $dados, int $id):void {
+
+        $passwordHash = password_hash($dados['password'], PASSWORD_DEFAULT);
         
-        $query = "UPDATE tb_professores SET nome = ?, nascimento = ?, admissao = ?, tb_user_id = ? WHERE id = ?"; 
+        $query = "UPDATE tb_users SET `email` = ?, `password` = ? WHERE id = ?"; 
         $stmt = Conexao::getInstancia()->prepare($query);
-        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['admissao'], $dados['tb_user_id'], $id]);
+        $stmt->execute([$dados['email'], $passwordHash, $id]);
     }
 
     public function deletar (int $id):void {
         
-        $query = "DELETE FROM tb_professores WHERE id = ?"; 
+        $query = "DELETE FROM tb_users WHERE id = ?"; 
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute([$id]);
     }

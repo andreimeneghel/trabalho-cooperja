@@ -88,23 +88,13 @@ try {
                 <div class="pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link active" aria-current="page" href="/academico">
                                 <i class="fas fa-home"></i> Página Inicial
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/academico/informacoes">
                                 <i class="fas fa-graduation-cap"></i> Minhas Notas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-book"></i> Minhas Matérias
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-chalkboard-teacher"></i> Minha Turma
                             </a>
                         </li>
                         <li class="nav-item">
@@ -153,7 +143,7 @@ try {
                         <div class="card h-100 shadow-sm">
                             <div class="card-body text-center">
                                 <i class="fas fa-table fa-5x mb-3 text-primary"></i>
-                                <h5 class="card-title">Gerenciar Acadêmicos</h5>
+                                <h5 class="card-title">Minhas notas</h5>
                                 <p class="card-text">Acesse uma tabela com todas as matérias, faltas e notas.</p>
                                 <a href="/academico/informacoes" class="btn btn-dark">Acessar</a>
                             </div>
