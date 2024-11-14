@@ -10,14 +10,11 @@ $sessao = new Sessao;
 $user = new UsuarioModelo;
 $id = $sessao->user_id;
 
-echo $id;
 
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-var_dump($dados);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    echo "bbbbb";
 
     $email = filter_var($dados['email'], FILTER_SANITIZE_EMAIL);
     $password = $dados['password'];
@@ -45,11 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $userNum = $user->contarEm($email);
 
-        echo $userNum;
-
         if ($userNum == 0) {
             $user->atualizar($dados, $id);
-            $_SESSION['flash_message'] = ['type' => 'sucess', 'message' => 'Atualizado com sucesso.'];
+            $_SESSION['flash_message'] = ['type' => 'success', 'message' => 'Atualizado com sucesso.'];
             header('Location: /mudarcadprof');
             exit;
         } 
