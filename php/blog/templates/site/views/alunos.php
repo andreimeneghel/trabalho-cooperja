@@ -54,6 +54,7 @@ if (isset($_GET['turma_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="/templates/site/assets/css/alunos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -62,16 +63,16 @@ if (isset($_GET['turma_id'])) {
 <body>
 
     <?php include 'header.php'; ?>
-    <div class="row m-0">
+    <div class="row m-0" style="min-height: 100vh">
 
         <?php include 'sidebar.php'; ?>
 
-        <div class="container mt-3 col-9">
-            <h2 class="mb-4 text-dark text-center">Selecionar Turma e Ver Alunos</h2>
+        <div class="container mt-3 col-9 ">
+            <h2 class="mb-4 text-white text-center">Selecionar Turma e Ver Alunos</h2>
 
-            <div class="main-container p-4 rounded shadow-sm" style="background-color: #f9f9f9;">
+            <div class="main-container p-4 rounded shadow-sm">
                 <div class="search-container">
-                    <form method="GET" action="" class="d-flex flex-wrap gap-3 align-items-end">
+                    <form method="GET" action="" class="d-flex  gap-3 align-items-end">
                         <div class="flex-grow-1">
                             <label for="turmaSelect" class="form-label fw-bold">Selecione uma Turma:</label>
                             <select class="form-select border-primary" name="turma_id" id="turmaSelect" onchange="this.form.submit()">
@@ -103,9 +104,10 @@ if (isset($_GET['turma_id'])) {
                     </ul>
                 </div>
             </div>
-        </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </div>
+</div>
 </body>
 
 
