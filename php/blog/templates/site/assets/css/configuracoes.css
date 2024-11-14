@@ -1,4 +1,7 @@
 body{
-    background: linear-gradient(to top,#ffc107, #1a3a34 );
+    background: linear-gradient(to bottom, #1a3a34, #3e6f65 60%, #f7e463);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 100vh;
 }
 

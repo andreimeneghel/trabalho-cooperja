@@ -73,7 +73,7 @@ if (isset($_GET['turma_id'])) {
             <div class="main-container p-4 rounded shadow-sm">
                 <div class="search-container">
                     <form method="GET" action="" class="d-flex  gap-3 align-items-end">
-                        <div class="flex-grow-1">
+                        <div class="flex-grow-1 text-white">
                             <label for="turmaSelect" class="form-label fw-bold">Selecione uma Turma:</label>
                             <select class="form-select border-primary" name="turma_id" id="turmaSelect" onchange="this.form.submit()">
                                 <option value="" class="text-muted">Escolha uma turma...</option>
@@ -84,7 +84,7 @@ if (isset($_GET['turma_id'])) {
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="flex-grow-1">
+                        <div class="flex-grow-1 text-white">
                             <label for="nome_aluno" class="form-label fw-bold">Pesquisar Aluno:</label>
                             <input type="text" class="form-control border-primary" name="nome_aluno" id="nome_aluno" value="<?= htmlspecialchars($nome_aluno); ?>" placeholder="Nome do aluno">
                         </div>
@@ -92,7 +92,7 @@ if (isset($_GET['turma_id'])) {
                 </div>
 
                 <div class="alunos-container mt-5">
-                    <h3 class="text-secondary text-center mb-3">Alunos:</h3>
+                    <h3 class="text-white text-center mb-3">Alunos:</h3>
                     <ul class="list-group list-group-flush shadow-sm" id="alunosList" style="background-color: #fff;">
                         <?php if (!empty($alunos)): ?>
                             <?php foreach ($alunos as $aluno): ?>
