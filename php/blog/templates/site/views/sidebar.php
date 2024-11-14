@@ -16,6 +16,11 @@
                     <i class="fas fa-chalkboard-teacher"></i> Turmas
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/configuracoes">
+                    <i class="fas fa-cogs fa"></i> Configuracoes
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
