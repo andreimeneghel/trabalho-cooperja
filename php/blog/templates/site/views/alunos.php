@@ -95,11 +95,20 @@ if (isset($_GET['turma_id'])) {
 
 </head>
 <body>
-    <header class="navbar navbar-dark sticky-top header-bg flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 header-text" href="/dashboard">Voltar</a>
-    </header>
 
-    <div class="container mt-5">
+    <?php
+    include 'header.php';
+    ?>
+
+
+
+<div class="row m-0">
+    
+<?php
+    include 'sidebar.php';
+    ?>
+    
+    <div class="container mt-5 col-9">
         <h2 class="mb-4 text-dark">Selecionar Turma e Ver Alunos</h2>
         
         <!-- Container com fundo diferente englobando a pesquisa e os alunos -->
@@ -160,6 +169,7 @@ if (isset($_GET['turma_id'])) {
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
 </body>
 </html>
 
