@@ -2,7 +2,12 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-  header('Location: /dashboard');
+    if ($_SESSION['user_role'] !== 'aluno') {
+      header('Location: /dashboard');
+    } 
+    if(($_SESSION['user_role'] !== 'professor')){
+      header('Location: /academico');
+    }
   exit;
 }
 
