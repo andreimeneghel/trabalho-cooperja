@@ -152,17 +152,13 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
         </div>
     </div>
 
-    <!-- Bootstrap JS, Popper.js, and Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         const userRole = "<?php echo $role; ?>";
-
-        // Verificação do papel do usuário e exibição do modal
         if (userRole !== 'professor') {
             mostrar();
         }
-
         function mostrar() {
             const modalPerm = new bootstrap.Modal(document.getElementById('permissionModal'), {
                 backdrop: 'static',
@@ -170,13 +166,10 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
             });
             modalPerm.show();
         }
-
-        // Formatando as datas após a página carregar
         function formatDate(date) {
             const d = new Date(date);
             return new Intl.DateTimeFormat('pt-BR').format(d); // Formata no formato dd/mm/yyyy
         }
-
         window.onload = function() {
             const professorNascimento = document.getElementById('professorNascimento');
             const professorAdmissao = document.getElementById('professorAdmissao');
@@ -189,7 +182,6 @@ $BASE_URL = "http://" . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] 
             }
         };
 
-        // Abrir modal de atualização
         document.getElementById('btnAtualizar').addEventListener('click', function() {
             event.preventDefault();
             console.log("Botão Atualizar clicado");
