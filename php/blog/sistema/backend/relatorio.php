@@ -1,5 +1,4 @@
 <?php
-// relatorio.php
 session_start();
 
 if ($_SESSION['role'] !== 'professor') {
@@ -7,6 +6,7 @@ if ($_SESSION['role'] !== 'professor') {
 }
 
 require_once '../Suporte/Conexao.php';
+
 use sistema\Suporte\Conexao;
 
 $turma_id = $_GET['turma_id'];  // Parâmetro para filtrar por turma
@@ -52,8 +52,6 @@ try {
     }
 
     echo "</table>";
-
 } catch (Exception $e) {
     echo "Erro: " . $e->getMessage();
 }
-?>

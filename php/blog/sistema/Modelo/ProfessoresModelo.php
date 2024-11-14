@@ -6,26 +6,27 @@ require_once 'sistema/Suporte/Conexao.php';
 
 use sistema\Suporte\Conexao;
 
-class ProfessoresModelo {
+class ProfessoresModelo
+{
 
-    public function ler(string $termos = null): array {
+    public function ler(string $termos = null): array
+    {
 
         if ($termos == null) {
             $clausula = "";
-        }
-
-        else {
+        } else {
             $clausula = $termos;
         }
 
-        $query = "SELECT * FROM tb_professores ".$clausula;
+        $query = "SELECT * FROM tb_professores " . $clausula;
         $stmt = Conexao::getInstancia()->query($query);
         $resultado = $stmt->fetchAll();
 
         return $resultado;
     }
 
-    public function contar(): int {
+    public function contar(): int
+    {
 
         $query = "SELECT COUNT(*) FROM tb_professores";
         $stmt = Conexao::getInstancia()->query($query);
@@ -34,28 +35,32 @@ class ProfessoresModelo {
         return $resultado;
     }
 
-    public function inserir(array $dados): void {
+    public function inserir(array $dados): void
+    {
 
-        $query = "INSERT INTO `tb_professores` (`nome`, `nascimento`, 'admissao', `tb_user_id`) VALUES (?, ?, ?, ?)";       
+        $query = "INSERT INTO `tb_professores` (`nome`, `nascimento`, 'admissao', `tb_user_id`) VALUES (?, ?, ?, ?)";
         $stmt = Conexao::getInstancia()->prepare($query);
-        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['admissao'], $dados['tb_user_id']]);     
+        $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['admissao'], $dados['tb_user_id']]);
     }
 
-    public function atualizar (array $dados, int $id):void {
-        
-        $query = "UPDATE tb_professores SET nome = ?, nascimento = ?, admissao = ?, tb_user_id = ? WHERE id = ?"; 
+    public function atualizar(array $dados, int $id): void
+    {
+
+        $query = "UPDATE tb_professores SET nome = ?, nascimento = ?, admissao = ?, tb_user_id = ? WHERE id = ?";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute([$dados['nome'], $dados['nascimento'], $dados['admissao'], $dados['tb_user_id'], $id]);
     }
 
-    public function deletar (int $id):void {
-        
-        $query = "DELETE FROM tb_professores WHERE id = ?"; 
+    public function deletar(int $id): void
+    {
+
+        $query = "DELETE FROM tb_professores WHERE id = ?";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute([$id]);
     }
 
-    public function lerTudo (int $id): ?array {
+    public function lerTudo(int $id): ?array
+    {
         $query = "SELECT 
                     p.id AS professor_id,
                     p.nome AS professor_nome,
@@ -85,10 +90,4 @@ class ProfessoresModelo {
 
         return $resultado ? (array) $resultado : null;
     }
-
-
-
-
 }
-
-?>
