@@ -116,7 +116,7 @@ if (isset($_GET['turma_id'])) {
                 </div>
 
                 <?php if (isset($alunos) && count($alunos) > 0): ?>
-                    <h2 class="text-center text-whitemb-3">Alunos da Turma Selecionada</h2>
+                    <h2 class="text-center text-white mb-3">Alunos da Turma Selecionada</h2>
                     <form action="/sistema/backend/cadastroNotasPresenca.php" method="post" class="card p-4">
                         <input type="hidden" name="turma_id" value="<?= htmlspecialchars($_GET['turma_id']) ?>">
                         <input type="hidden" name="materia_id" value="<?= htmlspecialchars($_GET['materia_id']) ?>">
